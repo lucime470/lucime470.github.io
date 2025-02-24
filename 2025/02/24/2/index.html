@@ -1,0 +1,684 @@
+
+  <!DOCTYPE html>
+  <html lang="en"  
+    
+      data-theme-mode="auto"
+    
+  >
+  <head>
+  <meta charset="utf-8">
+  
+
+  
+
+  
+
+  <script>window.REIMU_CONFIG = {};window.REIMU_CONFIG.icon_font = '4552607_0khxww3tj3q9';window.REIMU_CONFIG.clipboard_tips = {"success":"复制成功(*^▽^*)","fail":"复制失败 (ﾟ⊿ﾟ)ﾂ","copyright":{"enable":false,"count":50,"content":"本文版权：本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！"}};window.REIMU_CONFIG.code_block = {"expand":true};window.REIMU_CONFIG.base = 'http://example.com';</script>
+  
+  <title>
+    起课器 |
+    
+    Hexo
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin><link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7CNoto%20Serif%20SC:400,400italic,700,700italic&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7CNoto%20Serif%20SC:400,400italic,700,700italic&display=swap" media="print" onload="this.media&#x3D;&#39;all&#39;">
+  
+    <link rel="preload" href="//at.alicdn.com/t/c/font_4552607_0khxww3tj3q9.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  
+  
+    
+<link rel="stylesheet" href="/css/loader.css">
+
+  
+  
+    <meta name="description" content="#起课器 起课器 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586list1&#x3D;[&#x27;子&#x27;,&#x27;丑">
+<meta property="og:type" content="article">
+<meta property="og:title" content="起课器">
+<meta property="og:url" content="http://example.com/2025/02/24/2/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="#起课器 起课器 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586list1&#x3D;[&#x27;子&#x27;,&#x27;丑">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-02-24T13:42:02.000Z">
+<meta property="article:modified_time" content="2025-02-24T14:15:04.334Z">
+<meta property="article:author" content="余">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/images/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <link rel="preload" href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  
+  
+  
+  
+    
+<script src="https://npm.webcache.cn/pace-js@1.2.4/pace.min.js" integrity="sha384-k6YtvFUEIuEFBdrLKJ3YAUbBki333tj1CSUisai5Cswsg9wcLNaPzsTHDswp4Az8" crossorigin="anonymous"></script>
+
+  
+  
+    
+<link rel="stylesheet" href="https://npm.webcache.cn/@reimujs/aos@0.1.0/dist/aos.css">
+
+  
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+  <body>
+    
+  <div id='loader'>
+    <div class="loading-left-bg loading-bg"></div>
+    <div class="loading-right-bg loading-bg"></div>
+    <div class="spinner-box">
+      <div class="loading-taichi">
+        
+          <svg width="150" height="150" viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="https://www.w3.org/2000/svg" shape-rendering="geometricPrecision">
+            <path d="M303.5 432A80 80 0 0 1 291.5 592A80 80 0 0 1 303.5 432z" fill="var(--red-1, #ff5252)" />
+            <path d="M512 65A447 447 0 0 1 512 959L512 929A417 417 0 0 0 512 95A417 417 0 0 0 512 929L512 959A447 447 0 0 1 512 65z 
+           M512 95A417 417 0 0 1 929 512A208.5 208.5 0 0 1 720.5 720.5L720.5 592A80 80 0 0 0 720.5 432A80 80 0 0 0 720.5 592L720.5 720.5A208.5 208.5 0 0 1 512 512A208.5 208.5 0 0 0 303.5 303.5A208.5 208.5 0 0 0 95 512A417 417 0 0 1 512 95z" fill="var(--red-1, #ff5252)" />
+          </svg>
+        
+      </div>
+      <div class="loading-word">少女祈祷中...</div>
+    </div>
+  </div>
+  </div>
+  <script>
+    var time = null;
+    var startLoading = () => {
+      time = Date.now();
+      document.getElementById('loader').classList.remove("loading");
+    }
+    var endLoading = () => {
+      if (!time) {
+        document.body.style.overflow = 'auto';
+        document.getElementById('loader').classList.add("loading");
+      } else {
+        if (Date.now() - time > 500) {
+          time = null;
+          document.body.style.overflow = 'auto';
+          document.getElementById('loader').classList.add("loading");
+        } else {
+          setTimeout(endLoading, 500 - (Date.now() - time));
+          time = null;
+        }
+      }
+    }
+    window.addEventListener('DOMContentLoaded', endLoading);
+    document.getElementById('loader').addEventListener('click', endLoading);
+  </script>
+
+<div id="copy-tooltip" style="pointer-events: none; opacity: 0; transition: all 0.2s ease; position: fixed;top: 50%;left: 50%;z-index: 999;transform: translate(-50%, -50%);color: white;background: rgba(0, 0, 0, 0.5);padding: 10px 15px;border-radius: 10px;">
+</div>
+
+
+    <div id="container">
+      <div id="wrap">
+        <div id="header-nav">
+  <nav id="main-nav">
+    
+      
+        <span class="main-nav-link-wrap">
+          <div class="main-nav-icon icon rotate">
+            &#xe62b;
+          </div>
+          <a class="main-nav-link" href="/">Home</a>
+        </span>
+      
+        <span class="main-nav-link-wrap">
+          <div class="main-nav-icon icon rotate">
+            &#xe62b;
+          </div>
+          <a class="main-nav-link" href="/archives">Archives</a>
+        </span>
+      
+        <span class="main-nav-link-wrap">
+          <div class="main-nav-icon icon rotate">
+            &#xe62b;
+          </div>
+          <a class="main-nav-link" href="/about">About</a>
+        </span>
+      
+        <span class="main-nav-link-wrap">
+          <div class="main-nav-icon icon rotate">
+            &#xe62b;
+          </div>
+          <a class="main-nav-link" href="/friend">Friend</a>
+        </span>
+      
+    
+    <a id="main-nav-toggle" class="nav-icon"></a>
+  </nav>
+  <nav id="sub-nav">
+    
+      <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed" target="_blank"></a>
+    
+    
+    
+      <a id="nav-search-btn" class="nav-icon popup-trigger" title="Search"></a>
+    
+  </nav>
+  
+</div>
+<header id="header">
+  
+    <picture>
+      
+    </picture>
+    
+      <img fetchpriority="high" src="/images/banner.webp" alt="起课器">
+    
+  
+  <div id="header-outer">
+    <div id="header-title">
+      
+        
+        
+          <a href="/" id="logo">
+            <h1 data-aos="slide-up">起课器</h1>
+          </a>
+        
+      
+      
+        
+        <h2 id="subtitle-wrap" data-aos="slide-down">
+          
+        </h2>
+      
+    </div>
+  </div>
+</header>
+
+        <div id="content"  class="sidebar-right" >
+          <aside id="sidebar">
+  
+  
+  <div class="sidebar-wrapper wrap-sticky">
+    <div class="sidebar-wrap" data-aos="fade-up">
+      
+        <div class="sidebar-toc-sidebar"><div class="sidebar-toc">
+  <h3 class="toc-title">Contents</h3>
+  <div class="sidebar-toc-wrapper toc-div-class" >
+      
+        
+      
+  </div>
+</div>
+</div>
+        <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img data-src="/avatar/avatar.webp" data-sizes="auto" alt="余" class="lazyload">
+  <div class="sidebar-author-name">余</div>
+  <div class="sidebar-description"></div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>Post</div>
+    <div class="sidebar-state-number">3</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>Category</div>
+    <div class="sidebar-state-number">0</div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>Tag</div>
+    <div class="sidebar-state-number">0</div>
+  </div>
+</div>
+<div class="sidebar-social">
+  
+</div>
+<div class="sidebar-menu">
+  
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/" aria-label="Home"></a>
+        <div class="sidebar-menu-icon icon rotate">
+          &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">Home</div>
+      </div>
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/archives" aria-label="Archives"></a>
+        <div class="sidebar-menu-icon icon rotate">
+          &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">Archives</div>
+      </div>
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/about" aria-label="About"></a>
+        <div class="sidebar-menu-icon icon rotate">
+          &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">About</div>
+      </div>
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/friend" aria-label="Friend"></a>
+        <div class="sidebar-menu-icon icon rotate">
+          &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">Friend</div>
+      </div>
+    
+  
+</div>
+</div>
+      
+      
+        <div class="sidebar-btn-wrapper" style="position:static">
+          <div class="sidebar-toc-btn current"></div>
+          <div class="sidebar-common-btn"></div>
+        </div>
+      
+    </div>
+  </div>
+
+  <div class="sidebar-widget">
+  
+  </div>
+</aside>
+
+          <section id="main"><article id="post-2" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner" data-aos="fade-up">
+    <div class="article-meta">
+      <div class="article-date">
+  <span class="article-date-link" data-aos="zoom-in">
+    <time datetime="2025-02-24T13:42:02.000Z" itemprop="datePublished">2025-02-24</time>
+    <time style="display: none;" id="post-update-time">2025-02-24</time>
+  </span>
+</div>
+
+      
+
+    </div>
+    <div class="hr-line"></div>
+    
+
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+      
+        <p>#起课器</p>
+<p>起课器</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line">list1=[<span class="string">&#x27;子&#x27;</span>,<span class="string">&#x27;丑&#x27;</span>,<span class="string">&#x27;丑&#x27;</span>,<span class="string">&#x27;寅&#x27;</span>,<span class="string">&#x27;寅&#x27;</span>,<span class="string">&#x27;卯&#x27;</span>,<span class="string">&#x27;卯&#x27;</span>,<span class="string">&#x27;辰&#x27;</span>,<span class="string">&#x27;辰&#x27;</span>,<span class="string">&#x27;巳&#x27;</span>,<span class="string">&#x27;巳&#x27;</span>,<span class="string">&#x27;午&#x27;</span>,<span class="string">&#x27;午&#x27;</span>,<span class="string">&#x27;未&#x27;</span>,<span class="string">&#x27;未&#x27;</span>,<span class="string">&#x27;申&#x27;</span>,<span class="string">&#x27;申&#x27;</span>,<span class="string">&#x27;酉&#x27;</span>,<span class="string">&#x27;酉&#x27;</span>,<span class="string">&#x27;戌&#x27;</span>,<span class="string">&#x27;戌&#x27;</span>,<span class="string">&#x27;亥&#x27;</span>,<span class="string">&#x27;亥&#x27;</span>,<span class="string">&#x27;子&#x27;</span>] <span class="comment">#创建时辰列表</span></span><br><span class="line">list2=[<span class="string">&#x27;大安&#x27;</span>,<span class="string">&#x27;留连&#x27;</span>,<span class="string">&#x27;速喜&#x27;</span>,<span class="string">&#x27;赤口&#x27;</span>,<span class="string">&#x27;小吉&#x27;</span>,<span class="string">&#x27;空亡&#x27;</span>] <span class="comment">#创建六宫列表</span></span><br><span class="line">list3=[<span class="string">&#x27;木&#x27;</span>,<span class="string">&#x27;土&#x27;</span>,<span class="string">&#x27;火&#x27;</span>,<span class="string">&#x27;金&#x27;</span>,<span class="string">&#x27;水&#x27;</span>,<span class="string">&#x27;土&#x27;</span>] <span class="comment">#创建五行列表</span></span><br><span class="line">list4=[<span class="string">&#x27;东&#x27;</span>,<span class="string">&#x27;四方&#x27;</span>,<span class="string">&#x27;南&#x27;</span>,<span class="string">&#x27;西&#x27;</span>,<span class="string">&#x27;北&#x27;</span>,<span class="string">&#x27;中央&#x27;</span>] <span class="comment">#创建方位列表</span></span><br><span class="line">list5=[<span class="string">&#x27;青龙&#x27;</span>,<span class="string">&#x27;腾蛇&#x27;</span>,<span class="string">&#x27;朱雀&#x27;</span>,<span class="string">&#x27;白虎&#x27;</span>,<span class="string">&#x27;玄武&#x27;</span>,<span class="string">&#x27;勾陈&#x27;</span>] <span class="comment">#创建六神列表</span></span><br><span class="line">list6=[<span class="string">&#x27;沐浴&#x27;</span>,<span class="string">&#x27;冠带&#x27;</span>,<span class="string">&#x27;临官&#x27;</span>,<span class="string">&#x27;帝旺&#x27;</span>,<span class="string">&#x27;衰&#x27;</span>,<span class="string">&#x27;死&#x27;</span>,<span class="string">&#x27;病&#x27;</span>,<span class="string">&#x27;墓&#x27;</span>,<span class="string">&#x27;绝&#x27;</span>,<span class="string">&#x27;胎&#x27;</span>,<span class="string">&#x27;养&#x27;</span>,<span class="string">&#x27;长生&#x27;</span>] <span class="comment">#创建木对应的十二长生列表</span></span><br><span class="line">list7=[<span class="string">&#x27;胎&#x27;</span>,<span class="string">&#x27;养&#x27;</span>,<span class="string">&#x27;长生&#x27;</span>,<span class="string">&#x27;沐浴&#x27;</span>,<span class="string">&#x27;冠带&#x27;</span>,<span class="string">&#x27;临官&#x27;</span>,<span class="string">&#x27;帝旺&#x27;</span>,<span class="string">&#x27;衰&#x27;</span>,<span class="string">&#x27;死&#x27;</span>,<span class="string">&#x27;病&#x27;</span>,<span class="string">&#x27;墓&#x27;</span>,<span class="string">&#x27;绝&#x27;</span>] <span class="comment">#创建火对应的十二长生列表</span></span><br><span class="line">list8=[<span class="string">&#x27;死&#x27;</span>,<span class="string">&#x27;病&#x27;</span>,<span class="string">&#x27;墓&#x27;</span>,<span class="string">&#x27;绝&#x27;</span>,<span class="string">&#x27;胎&#x27;</span>,<span class="string">&#x27;养&#x27;</span>,<span class="string">&#x27;长生&#x27;</span>,<span class="string">&#x27;沐浴&#x27;</span>,<span class="string">&#x27;冠带&#x27;</span>,<span class="string">&#x27;临官&#x27;</span>,<span class="string">&#x27;帝旺&#x27;</span>,<span class="string">&#x27;衰&#x27;</span>] <span class="comment">#创建金对应的十二长生列表</span></span><br><span class="line">list9=[<span class="string">&#x27;帝旺&#x27;</span>,<span class="string">&#x27;衰&#x27;</span>,<span class="string">&#x27;死&#x27;</span>,<span class="string">&#x27;病&#x27;</span>,<span class="string">&#x27;墓&#x27;</span>,<span class="string">&#x27;绝&#x27;</span>,<span class="string">&#x27;胎&#x27;</span>,<span class="string">&#x27;养&#x27;</span>,<span class="string">&#x27;长生&#x27;</span>,<span class="string">&#x27;沐浴&#x27;</span>,<span class="string">&#x27;冠带&#x27;</span>,<span class="string">&#x27;临官&#x27;</span>] <span class="comment">#创建水，土对应的十二长生列表</span></span><br><span class="line">list10=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>,<span class="number">11</span>,<span class="number">12</span>,<span class="number">13</span>,<span class="number">14</span>,<span class="number">15</span>,<span class="number">16</span>,<span class="number">17</span>,<span class="number">18</span>,<span class="number">19</span>,<span class="number">20</span>,<span class="number">21</span>,<span class="number">22</span>,<span class="number">23</span>] <span class="comment">#创建时间列表</span></span><br><span class="line">list11=[<span class="string">&#x27;青龙&#x27;</span>,<span class="string">&#x27;朱雀&#x27;</span>,<span class="string">&#x27;勾陈&#x27;</span>,<span class="string">&#x27;白虎&#x27;</span>,<span class="string">&#x27;玄武&#x27;</span>,<span class="string">&#x27;腾蛇&#x27;</span>] <span class="comment">#创建活六神顺序列表</span></span><br><span class="line">dict1=&#123;<span class="string">&#x27;子&#x27;</span>: <span class="number">1</span>,<span class="string">&#x27;丑&#x27;</span>: <span class="number">2</span>,<span class="string">&#x27;寅&#x27;</span>: <span class="number">3</span>,<span class="string">&#x27;卯&#x27;</span>: <span class="number">4</span>,<span class="string">&#x27;辰&#x27;</span>: <span class="number">5</span>,<span class="string">&#x27;巳&#x27;</span>: <span class="number">6</span>,<span class="string">&#x27;午&#x27;</span>: <span class="number">7</span>,<span class="string">&#x27;未&#x27;</span>: <span class="number">8</span>,<span class="string">&#x27;申&#x27;</span>: <span class="number">9</span>,<span class="string">&#x27;酉&#x27;</span>: <span class="number">10</span>,<span class="string">&#x27;戌&#x27;</span>: <span class="number">11</span>,<span class="string">&#x27;亥&#x27;</span>: <span class="number">12</span>&#125; <span class="comment">#创建时辰字典</span></span><br><span class="line">dict2=&#123;<span class="string">&#x27;木&#x27;</span>:<span class="number">6</span>,<span class="string">&#x27;火&#x27;</span>:<span class="number">7</span>,<span class="string">&#x27;金&#x27;</span>:<span class="number">8</span>,<span class="string">&#x27;水&#x27;</span>:<span class="number">9</span>,<span class="string">&#x27;土&#x27;</span>:<span class="number">9</span>&#125;</span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>: <span class="comment">#无限循环</span></span><br><span class="line">   <span class="keyword">try</span>: <span class="comment">#尝试运行可能出错的代码</span></span><br><span class="line">      time=<span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&quot;以24时制输入当地当前时:&quot;</span>)) <span class="comment">#获取时间  </span></span><br><span class="line">   <span class="keyword">except</span> (ValueError, TypeError): <span class="comment">#数值错误和数值类型错误时的处理</span></span><br><span class="line">      <span class="built_in">print</span>(<span class="string">&quot;错误,输入数字有误,例:当前13:11,则输入13&quot;</span>)</span><br><span class="line">      <span class="keyword">continue</span> <span class="comment">#跳过下面的循环，防止因为上面错误导致time没有获取数值而使下面的判断报错</span></span><br><span class="line">   <span class="keyword">if</span> time <span class="keyword">in</span> list10: <span class="comment">#判断输入数字是否为0~23</span></span><br><span class="line">      <span class="keyword">break</span> <span class="comment">#正常则执行下面的代码</span></span><br><span class="line">   <span class="keyword">else</span>: <span class="comment">#不符合则提示并循环</span></span><br><span class="line">      <span class="built_in">print</span>(<span class="string">&quot;错误,输入数字有误,例:当前13:11,则输入13&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;输入心中立即想到的任意大小的正整数&quot;</span>)</span><br><span class="line">numbers1 = [<span class="literal">None</span>, <span class="literal">None</span>, <span class="literal">None</span>]  <span class="comment"># 用列表存储 x, y, z</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>): <span class="comment"># 循环三次以获取三个数字</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>: <span class="comment">#无限循环</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            numbers1[i] = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">f&quot;请输入第 <span class="subst">&#123;i + <span class="number">1</span>&#125;</span> 个数字: &quot;</span>)) <span class="comment">#使用f语句</span></span><br><span class="line">            <span class="keyword">if</span> numbers1[i] &lt;= <span class="number">0</span>:  <span class="comment"># 检查输入的数字是否为正整数</span></span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&quot;输入数字有误，请输入正负整数&quot;</span>)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">break</span>  <span class="comment"># 如果输入有效，则退出当前的 while 循环</span></span><br><span class="line">        <span class="keyword">except</span> (ValueError,TypeError):</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;输入数字有误，请输入正负整数&quot;</span>)</span><br><span class="line">x, y, z = numbers1 <span class="comment"># 将输入的数字赋值给 x, y, z</span></span><br><span class="line">time1 = list1[time] <span class="comment">#将时间对应时辰</span></span><br><span class="line">time2 = dict1.get(time1,<span class="string">&#x27;无效值&#x27;</span>) <span class="comment">#调用字典将时辰与数字对应，time1上不用加&#x27;&#x27;</span></span><br><span class="line">time3 = time2%<span class="number">6</span> <span class="comment">#对time2取余数，可知龙头宫位</span></span><br><span class="line">whole = <span class="number">6</span>-time3 <span class="comment">#得出青龙后还有几个元素作为整体</span></span><br><span class="line">element=list11[:whole+<span class="number">1</span>] <span class="comment">#将青龙以及后面的元素作为整体</span></span><br><span class="line">x1,y1,z1= (x-<span class="number">1</span>)%<span class="number">6</span>,(x+y-<span class="number">2</span>)%<span class="number">6</span>,(x+y+z-<span class="number">3</span>)%<span class="number">6</span> <span class="comment">#分别取余数</span></span><br><span class="line">x2,y2,z2 = list2[x1],list2[y1],list2[z1] <span class="comment">#分别给三才赋值六宫</span></span><br><span class="line">x3,y3,z3 = list3[x1],list3[y1],list3[z1] <span class="comment">#分别给三才赋值五行</span></span><br><span class="line">x4,y4,z4 = list4[x1],list4[y1],list4[z1] <span class="comment">#分别给三才赋值方位</span></span><br><span class="line"><span class="keyword">if</span> time3 == <span class="number">1</span>:</span><br><span class="line">   list12=list11</span><br><span class="line"><span class="keyword">elif</span> time3 == <span class="number">0</span>:</span><br><span class="line">   list12=[<span class="string">&#x27;朱雀&#x27;</span>,<span class="string">&#x27;勾陈&#x27;</span>,<span class="string">&#x27;白虎&#x27;</span>,<span class="string">&#x27;玄武&#x27;</span>,<span class="string">&#x27;腾蛇&#x27;</span>,<span class="string">&#x27;青龙&#x27;</span>]</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">   list12=[x <span class="keyword">for</span> x <span class="keyword">in</span> list11 <span class="keyword">if</span> x <span class="keyword">not</span> <span class="keyword">in</span> element]+element <span class="comment">#先遍历列表8不属于整体的元素再加上整体中的元素生成新列表10</span></span><br><span class="line">x5,y5,z5 = list5[x1],list5[y1],list5[z1] <span class="comment">#分别给三才赋值六神</span></span><br><span class="line">x6,y6,z6 = list12[x1],list12[y1],list12[z1] <span class="comment">#分别给三才赋值活六神</span></span><br><span class="line">number1,number2,number3 = dict2.get(x3),dict2.get(y3),dict2.get(z3) <span class="comment">#调用字典将五行与列表数字对应</span></span><br><span class="line">list13,list14,list15=<span class="built_in">globals</span>()[<span class="string">f&#x27;list<span class="subst">&#123;number1&#125;</span>&#x27;</span>],<span class="built_in">globals</span>()[<span class="string">f&#x27;list<span class="subst">&#123;number2&#125;</span>&#x27;</span>],<span class="built_in">globals</span>()[<span class="string">f&#x27;list<span class="subst">&#123;number3&#125;</span>&#x27;</span>] <span class="comment">#使用globals()作用于全局区别于locals()只能在一个函数局部内返回变量，生成三才对应的十二长生列表</span></span><br><span class="line">x7,y7,z7 =list13[time2-<span class="number">1</span>],list14[time2-<span class="number">1</span>],list15[time2-<span class="number">1</span>]</span><br><span class="line">time_len = <span class="built_in">len</span>(<span class="built_in">str</span>(time))</span><br><span class="line"><span class="keyword">if</span> time_len == <span class="number">1</span>:</span><br><span class="line">   <span class="built_in">print</span>(<span class="string">&#x27;时间&#x27;</span>,<span class="string">&#x27;&#x27;</span>,time,<span class="string">&#x27;  &#x27;</span>,time1)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">   <span class="built_in">print</span>(<span class="string">&#x27;时间&#x27;</span>,<span class="string">&#x27;&#x27;</span>,time,<span class="string">&#x27; &#x27;</span>,time1)</span><br><span class="line"><span class="built_in">print</span>(x2,y2,z2)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;&#x27;</span>,x3,<span class="string">&#x27; &#x27;</span>,y3,<span class="string">&#x27; &#x27;</span>,z3)</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">print_xyz</span>(<span class="params">x,y,z</span>): <span class="comment">#封装成函数</span></span><br><span class="line">   x_len,y_len,z_len = <span class="built_in">len</span>(x),<span class="built_in">len</span>(y),<span class="built_in">len</span>(z)</span><br><span class="line">   <span class="keyword">if</span> x_len == <span class="number">1</span> <span class="keyword">and</span> y_len == <span class="number">1</span> <span class="keyword">and</span> z_len == <span class="number">1</span>:</span><br><span class="line">      <span class="built_in">print</span>(<span class="string">&#x27;&#x27;</span>, x, <span class="string">&#x27; &#x27;</span>, y, <span class="string">&#x27; &#x27;</span>, z)</span><br><span class="line">   <span class="keyword">elif</span> x_len == <span class="number">2</span> <span class="keyword">and</span> y_len == <span class="number">1</span> <span class="keyword">and</span> z_len == <span class="number">1</span>:</span><br><span class="line">      <span class="built_in">print</span>(x, <span class="string">&#x27;&#x27;</span>, y, <span class="string">&#x27; &#x27;</span>, z)</span><br><span class="line">   <span class="keyword">elif</span> x_len == <span class="number">2</span> <span class="keyword">and</span> y_len == <span class="number">2</span> <span class="keyword">and</span> z_len == <span class="number">1</span>:</span><br><span class="line">      <span class="built_in">print</span>(x, y, <span class="string">&#x27;&#x27;</span>, z)</span><br><span class="line">   <span class="keyword">elif</span> x_len == <span class="number">2</span> <span class="keyword">and</span> y_len == <span class="number">1</span> <span class="keyword">and</span> z_len == <span class="number">2</span>:</span><br><span class="line">      <span class="built_in">print</span>(x, <span class="string">&#x27;&#x27;</span>, y, <span class="string">&#x27;&#x27;</span>, z)</span><br><span class="line">   <span class="keyword">elif</span> x_len == <span class="number">1</span> <span class="keyword">and</span> y_len == <span class="number">2</span> <span class="keyword">and</span> z_len == <span class="number">1</span>:</span><br><span class="line">      <span class="built_in">print</span>(<span class="string">&#x27;&#x27;</span>, x, <span class="string">&#x27;&#x27;</span>, y, <span class="string">&#x27;&#x27;</span>, z)</span><br><span class="line">   <span class="keyword">elif</span> x_len == <span class="number">1</span> <span class="keyword">and</span> y_len == <span class="number">2</span> <span class="keyword">and</span> z_len == <span class="number">2</span>:</span><br><span class="line">      <span class="built_in">print</span>(<span class="string">&#x27;&#x27;</span>, x, <span class="string">&#x27;&#x27;</span>, y, z)</span><br><span class="line">   <span class="keyword">elif</span> x_len == <span class="number">1</span> <span class="keyword">and</span> y_len == <span class="number">1</span> <span class="keyword">and</span> z_len == <span class="number">2</span>:</span><br><span class="line">      <span class="built_in">print</span>(<span class="string">&#x27;&#x27;</span>, x, <span class="string">&#x27; &#x27;</span>, y, <span class="string">&#x27;&#x27;</span>, z)</span><br><span class="line">   <span class="keyword">else</span>:</span><br><span class="line">      <span class="built_in">print</span>(x, y, z)</span><br><span class="line">print_xyz(x4,y4,z4) <span class="comment">#调用函数</span></span><br><span class="line"><span class="built_in">print</span>(x5,y5,z5)</span><br><span class="line"><span class="built_in">print</span>(x6,y6,z6)</span><br><span class="line">print_xyz(x7,y7,z7) <span class="comment">#调用函数</span></span><br><span class="line"><span class="built_in">input</span>(<span class="string">&quot;按下Enter退出&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+    </footer>
+  </div>
+  
+  <nav id="article-nav" data-aos="fade-up">
+    
+    
+    
+    <div class="article-nav-link-wrap article-nav-link-right">
+      
+        <img data-src="/rgb(255,117,117)" data-sizes="auto" alt="第一篇文章" class="lazyload">
+      
+      <a href="/2025/02/08/1/"></a>
+      <div class="article-nav-caption">Older</div>
+      <h3 class="article-nav-title">
+        
+          第一篇文章
+        
+      </h3>
+    </div>
+    
+  </nav>
+
+
+</article>
+
+
+
+
+
+
+</section>
+        </div>
+        
+        
+        <footer id="footer">
+  <div style="width: 100%; overflow: hidden">
+    <div class="footer-line"></div>
+  </div>
+  <div id="footer-info">
+    
+    <div>
+      <span class="icon-copyright"></span>
+      2020-2025
+      <span class="footer-info-sep rotate"></span>
+      余
+    </div>
+    
+      <div>
+        Powered by&nbsp;<a href="https://hexo.io/" rel="noopener external nofollow noreferrer" target="_blank">Hexo</a>&nbsp;
+        Theme.<a href="https://github.com/D-Sketon/hexo-theme-reimu" rel="noopener external nofollow noreferrer" target="_blank">Reimu</a>
+      </div>
+    
+    
+      <div>
+        <span class="icon-brush"></span>
+        1.6k
+        &nbsp;|&nbsp;
+        <span class="icon-coffee"></span>
+        00:09
+      </div>
+    
+    
+    
+    
+      <div>
+        <span class="icon-eye"></span>
+        <span id="busuanzi_container_site_pv">Number of visits&nbsp;<span id="busuanzi_value_site_pv"></span></span>
+        &nbsp;|&nbsp;
+        <span class="icon-user"></span>
+        <span id="busuanzi_container_site_uv">Number of visitors&nbsp;<span id="busuanzi_value_site_uv"></span></span>
+      </div>
+    
+  </div>
+</footer>
+
+        
+          <div class="sidebar-top">
+            <div class="sidebar-top-taichi rotate"></div>
+            <div class="arrow-up"></div>
+          </div>
+        
+        <div id="mask" class="hide"></div>
+      </div>
+      <nav id="mobile-nav">
+  <div class="sidebar-wrap">
+    
+      <div class="sidebar-toc-sidebar"><div class="sidebar-toc">
+  <h3 class="toc-title">Contents</h3>
+  <div class="sidebar-toc-wrapper toc-div-class" >
+      
+        
+      
+  </div>
+</div>
+</div>
+      <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img data-src="/avatar/avatar.webp" data-sizes="auto" alt="余" class="lazyload">
+  <div class="sidebar-author-name">余</div>
+  <div class="sidebar-description"></div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>Post</div>
+    <div class="sidebar-state-number">3</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>Category</div>
+    <div class="sidebar-state-number">0</div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>Tag</div>
+    <div class="sidebar-state-number">0</div>
+  </div>
+</div>
+<div class="sidebar-social">
+  
+</div>
+<div class="sidebar-menu">
+  
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/" aria-label="Home"></a>
+        <div class="sidebar-menu-icon icon rotate">
+          &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">Home</div>
+      </div>
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/archives" aria-label="Archives"></a>
+        <div class="sidebar-menu-icon icon rotate">
+          &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">Archives</div>
+      </div>
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/about" aria-label="About"></a>
+        <div class="sidebar-menu-icon icon rotate">
+          &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">About</div>
+      </div>
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/friend" aria-label="Friend"></a>
+        <div class="sidebar-menu-icon icon rotate">
+          &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">Friend</div>
+      </div>
+    
+  
+</div>
+</div>
+    
+  </div>
+  
+    <div class="sidebar-btn-wrapper">
+      <div class="sidebar-toc-btn current"></div>
+      <div class="sidebar-common-btn"></div>
+    </div>
+  
+</nav>
+
+    </div>
+    
+      <div class="site-search">
+        <div class="reimu-popup popup">
+          <div class="reimu-search">
+            <div class="reimu-search-input-icon"></div>
+            <div class="reimu-search-input" id="reimu-search-input"></div>
+            <div class="popup-btn-close"></div>
+          </div>
+          <div class="reimu-results">
+            <div id="reimu-stats"></div>
+            <div id="reimu-hits"></div>
+            <div id="reimu-pagination" class="reimu-pagination"></div>
+          </div>
+          <img class="reimu-bg" src="/images/reimu.png"/>
+        </div>
+      </div>
+    
+    
+<script src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js" integrity="sha384-3gT&#x2F;vsepWkfz&#x2F;ff7PpWNUeMzeWoH3cDhm&#x2F;A8jM7ouoAK0&#x2F;fP&#x2F;9bcHHR5kHq2nf+e" crossorigin="anonymous"></script>
+
+
+<script src="https://npm.webcache.cn/clipboard@2.0.11/dist/clipboard.min.js" integrity="sha384-J08i8An&#x2F;QeARD9ExYpvphB8BsyOj3Gh2TSh1aLINKO3L0cMSH2dN3E22zFoXEi0Q" crossorigin="anonymous"></script>
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+  
+<script src="/js/aos.js"></script>
+
+  <script>
+    var aosInit = () => {
+      AOS.init({
+        duration: 1000,
+        easing: "ease",
+        once: true,
+        offset: 50,
+      });
+    };
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', aosInit);
+    } else {
+      aosInit();
+    }
+  </script>
+
+
+
+<script src="/js/pjax_script.js" data-pjax></script>
+
+
+
+  
+<script src="/js/generator_search.js" defer></script>
+
+
+
+
+
+
+  
+<script src="https://npm.webcache.cn/mouse-firework@0.1.0/dist/index.umd.js" integrity="sha384-KM6i7tu43nYd6e0beIljxHMC5tZc58XBDu7pPA58w50h18Jsx7gLdimfS09RXlKv" crossorigin="anonymous"></script>
+
+  <script>
+    window.firework && window.firework(JSON.parse('{"excludeElements":["a","button"],"particles":[{"shape":"circle","move":["emit"],"easing":"easeOutExpo","colors":["#ff5252","#ff7c7c","#ffafaf","#ffd0d0"],"number":20,"duration":[1200,1800],"shapeOptions":{"radius":[16,32],"alpha":[0.3,0.5]}},{"shape":"circle","move":["diffuse"],"easing":"easeOutExpo","colors":["#ff0000"],"number":1,"duration":[1200,1800],"shapeOptions":{"radius":20,"alpha":[0.2,0.5],"lineWidth":6}}]}'))
+  </script>
+
+
+
+
+
+
+
+
+
+
+<div id="lazy-script">
+  <div>
+    
+      
+      
+      <script data-pjax>
+        window.REIMU_POST = {
+          author: "余",
+          title: "起课器",
+          url: "http://example.com/2025/02/24/2/",
+          excerpt: "",
+          description: "",
+          stripContent: "#起课器 起课器 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586list1=[&amp;#x27;子&amp;#x27;,&amp;#x27;丑&amp;#x27;,&amp;#x27;丑&amp;#x27;,&amp;#x27;寅&amp;#x27;,&amp;#x27;寅&amp;#x27;,&amp;",
+          date: "Mon Feb 24 2025 21:42:02 GMT+0800",
+          updated: "Mon Feb 24 2025 22:15:04 GMT+0800",
+          cover: "/images/banner.webp",
+        };
+      </script>
+       
+    
+    
+      
+        
+<script src="/js/insert_highlight.js" data-pjax></script>
+
+        
+      
+    
+    
+      <script type="module" data-pjax>
+        const PhotoSwipeLightbox = (await safeImport("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe-lightbox.esm.min.js", "sha384-DiL6M/gG+wmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF/N6lrZi/")).default;
+        
+        const pswp = () => {
+          if (_$$('.article-entry a.article-gallery-item').length > 0) {
+            new PhotoSwipeLightbox({
+              gallery: '.article-entry',
+              children: 'a.article-gallery-item',
+              pswpModule: () => safeImport("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8+oTJ7m3DfYEWX1fu1scuS4+s")
+            }).init();
+          }
+          if(_$$('.article-gallery a.article-gallery-item').length > 0) {
+            new PhotoSwipeLightbox({
+              gallery: '.article-gallery',
+              children: 'a.article-gallery-item',
+              pswpModule: () => safeImport("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8+oTJ7m3DfYEWX1fu1scuS4+s")
+            }).init();
+          }
+          window.lightboxStatus = 'done';
+          window.removeEventListener('lightbox:ready', pswp);
+        }
+        if(window.lightboxStatus === 'ready') {
+          pswp()
+        } else {
+          window.addEventListener('lightbox:ready', pswp);
+        }
+      </script>
+      
+
+
+
+
+
+
+
+
+    
+  </div>
+</div>
+
+
+  <script>
+    console.log(String.raw`%c 
+ ______     ______     __     __    __     __  __    
+/\  == \   /\  ___\   /\ \   /\ "-./  \   /\ \/\ \   
+\ \  __<   \ \  __\   \ \ \  \ \ \-./\ \  \ \ \_\ \  
+ \ \_\ \_\  \ \_____\  \ \_\  \ \_\ \ \_\  \ \_____\ 
+  \/_/ /_/   \/_____/   \/_/   \/_/  \/_/   \/_____/ 
+                                                  
+`,'color: #ff5252;')
+    console.log('%c Theme.Reimu v' + '1.5.0' + ' %c https://github.com/D-Sketon/hexo-theme-reimu ', 'color: white; background: #ff5252; padding:5px 0;', 'padding:4px;border:1px solid #ff5252;')
+  </script>
+  
+
+
+
+  
+<script src="https://npm.webcache.cn/busuanzi@2.3.0/bsz.pure.mini.js" integrity="sha384-0M75wtSkhjIInv4coYlaJU83+OypaRCIq2SukQVQX04eGTCBXJDuWAbJet56id+S" crossorigin="anonymous" async></script>
+
+
+
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.getRegistrations().then((registrations) => {
+      for (let registration of registrations) {
+        registration.unregister();
+      }
+    });
+  }
+</script>
+
+
+
+
+
+
+
+  </body>
+  </html>
+
