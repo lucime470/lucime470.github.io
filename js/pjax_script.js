@@ -34,12 +34,12 @@ _$$(
     // iconfont
     element.innerHTML = window.REIMU_CONFIG.anchor_icon
       ? `&#x${window.REIMU_CONFIG.anchor_icon};`
-      : "&#xe635;";
+      : window.REIMU_CONFIG.anchor_icon === false ? "" : "&#xe635;";
   } else {
     // fontawesome
     element.innerHTML = window.REIMU_CONFIG.anchor_icon
       ? `&#x${window.REIMU_CONFIG.anchor_icon};`
-      : "&#xf292;";
+      : window.REIMU_CONFIG.anchor_icon === false ? "" : "&#xf292;";
   }
 });
 
@@ -258,7 +258,7 @@ function tocInit() {
 
     let parent = target.parentNode;
 
-    while (!parent.matches(".sidebar-toc")) {
+    while (!parent.matches(".sidebar-toc-sidebar")) {
       if (parent.matches("li")) {
         parent.classList.add("active");
         const t = document.getElementById(
@@ -371,35 +371,27 @@ _$(".share-icon.icon-weixin")
         return;
       }
       _$("#share-weixin-qr").src = dataUrl;
-      htmlToImage
-        .toPng(_$(".share-weixin-dom"), {
-          skipFonts: true,
-          preferredFontFormat: "woff2",
-          backgroundColor: "white",
-        })
-        .then((dataUrl) => {
-          const img = new Image();
-          img.src = dataUrl;
+      snapdom.toPng(_$(".share-weixin-dom")).then((img) => {
+        _$(".share-weixin-canvas").appendChild(img);
+      }).catch(() => {
+        // we assume that the error is caused by the browser's security policy
+        // so we will remove the banner and try again
+        _$("#share-weixin-banner").remove();
+        snapdom.toPng(_$(".share-weixin-dom")).then((img) => {
           _$(".share-weixin-canvas").appendChild(img);
-        })
-        .catch(() => {
-          // we assume that the error is caused by the browser's security policy
-          // so we will remove the banner and try again
-          _$("#share-weixin-banner").remove();
-          htmlToImage
-            .toPng(_$(".share-weixin-dom"), {
-              skipFonts: true,
-              preferredFontFormat: "woff2",
-              backgroundColor: "white",
-            })
-            .then((dataUrl) => {
-              const img = new Image();
-              img.src = dataUrl;
-              _$(".share-weixin-canvas").appendChild(img);
-            })
-            .catch(() => {
-              console.error("Failed to generate weixin share image.");
-            });
+        }).catch(() => {
+          console.error("Failed to generate weixin share image.");
         });
+      });
     });
   });
+
+
+var imgElement = _$("#header > img");
+if (imgElement.src || imgElement.style.background) {
+  window.bannerElement = imgElement;
+} else {
+  window.bannerElement = _$("#header > picture img");
+}
+
+window.generateSchemeHandler?.();
