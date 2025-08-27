@@ -1,809 +1,175 @@
-
-  <!DOCTYPE html>
-  <html lang="en"  
-    
-      data-theme-mode="auto"
-    
-  >
-  <head>
-  
-  <meta charset="utf-8">
-  
-
-  
-
-  
-
-  <script>window.REIMU_CONFIG = {};window.REIMU_CONFIG.icon_font = '4552607_4k4bc36ef96';window.REIMU_CONFIG.clipboard_tips = {"success":{"en":"Copy successfully (*^▽^*)","zh-CN":"复制成功 (*^▽^*)","zh-TW":"複製成功 (*^▽^*)","ja":"コピー成功 (*^▽^*)","pt-BR":"Copiado com sucesso (*^▽^*)"},"fail":{"en":"Copy failed (ﾟ⊿ﾟ)ﾂ","zh-CN":"复制失败 (ﾟ⊿ﾟ)ﾂ","zh-TW":"複製失敗 (ﾟ⊿ﾟ)ﾂ","ja":"コピー失敗 (ﾟ⊿ﾟ)ﾂ","pt-BR":"Falha ao copiar (ﾟ⊿ﾟ)ﾂ"},"copyright":{"enable":false,"count":50,"license_type":"by-nc-sa"}};window.REIMU_CONFIG.clipboard_tips.copyright.content = 'All articles on this blog are licensed under the BY-NC-SA license agreement unless otherwise stated. Please indicate the source when reprinting!';window.REIMU_CONFIG.code_block = {"expand":true};window.REIMU_CONFIG.base = 'http://example.com';</script>
-  
-  <title>
-    
-    Hexo
-  </title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  
-  
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin><link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7CNoto%20Serif%20SC:400,400italic,700,700italic&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7CNoto%20Serif%20SC:400,400italic,700,700italic&display=swap" media="print" onload="this.media&#x3D;&#39;all&#39;">
-  
-  
-    <link rel="preload" href="//at.alicdn.com/t/c/font_4552607_4k4bc36ef96.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-  
-  
-    
-<link rel="stylesheet" href="/css/loader.css">
-
-  
-  
-    <meta property="og:type" content="website">
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Hexo</title><meta name="author" content="余"><meta name="copyright" content="余"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta property="og:type" content="website">
 <meta property="og:title" content="Hexo">
 <meta property="og:url" content="http://example.com/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/images/banner.webp">
+<meta property="og:image" content="http://example.com/img/butterfly-icon.png">
 <meta property="article:author" content="余">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/images/banner.webp">
-  
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/images/favicon.ico">
-  
-  
-<link rel="stylesheet" href="/css/style.css">
-
-  <link rel="preload" as="style" onload="this.onload&#x3D;null;this.rel&#x3D;&#39;stylesheet&#39;" href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css" integrity="sha384-IfxC36XL&#x2F;toUyJ939C73PcgMuRzAZuIzZxE38drsmO5p6jD7ei+Zx&#x2F;1oA&#x2F;0l8ysE" crossorigin="anonymous">
-  
-  
-  
-  
-    
-<script src="https://npm.webcache.cn/pace-js@1.2.4/pace.min.js" integrity="sha384-k6YtvFUEIuEFBdrLKJ3YAUbBki333tj1CSUisai5Cswsg9wcLNaPzsTHDswp4Az8" crossorigin="anonymous"></script>
-
-  
-  
-    
-<link rel="stylesheet" href="https://npm.webcache.cn/@reimujs/aos@0.1.2/dist/aos.css" integrity="sha384-GMRP93c6Hkz9JVKGAuRR3nTS7M07RwPgTFenXiosjq2VbVgvdDNcz1g6Mkj8AONa" crossorigin="anonymous">
-
-  
-  
-  
-<meta name="generator" content="Hexo 7.3.0"></head>
-
-  <body>
-    
-    
-  <div id='loader'>
-    <div class="loading-left-bg loading-bg"></div>
-    <div class="loading-right-bg loading-bg"></div>
-    <div class="spinner-box">
-      <div class="loading-taichi rotate">
-        
-          <svg width="150" height="150" viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="https://www.w3.org/2000/svg" shape-rendering="geometricPrecision">
-            <path d="M303.5 432A80 80 0 0 1 291.5 592A80 80 0 0 1 303.5 432z" fill="var(--red-1, #ff5252)" />
-            <path d="M512 65A447 447 0 0 1 512 959L512 929A417 417 0 0 0 512 95A417 417 0 0 0 512 929L512 959A447 447 0 0 1 512 65z 
-           M512 95A417 417 0 0 1 929 512A208.5 208.5 0 0 1 720.5 720.5L720.5 592A80 80 0 0 0 720.5 432A80 80 0 0 0 720.5 592L720.5 720.5A208.5 208.5 0 0 1 512 512A208.5 208.5 0 0 0 303.5 303.5A208.5 208.5 0 0 0 95 512A417 417 0 0 1 512 95z" fill="var(--red-1, #ff5252)" />
-          </svg>
-        
-      </div>
+<meta name="twitter:image" content="http://example.com/img/butterfly-icon.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Hexo",
+  "url": "http://example.com/"
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
       
-      
-        
-      
-      <div class="loading-word">Loading...</div>
-    </div>
-  </div>
-  </div>
-  <script>
-    var time = null;
-    var startLoading = () => {
-      time = Date.now();
-      document.getElementById('loader').classList.remove("loading");
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
     }
-    var endLoading = () => {
-      if (!time) {
-        document.body.style.overflow = 'auto';
-        document.getElementById('loader').classList.add("loading");
-      } else {
-        if (Date.now() - time > 500) {
-          time = null;
-          document.body.style.overflow = 'auto';
-          document.getElementById('loader').classList.add("loading");
-        } else {
-          setTimeout(endLoading, 500 - (Date.now() - time));
-          time = null;
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
         }
       }
-    }
-    window.addEventListener('DOMContentLoaded', endLoading);
-    document.getElementById('loader').addEventListener('click', endLoading);
-  </script>
-
-<div id="copy-tooltip" style="pointer-events: none; opacity: 0; transition: all 0.2s ease; position: fixed;top: 50%;left: 50%;z-index: 999;transform: translate(-50%, -50%);color: white;background: rgba(0, 0, 0, 0.5);padding: 10px 15px;border-radius: 10px;">
-</div>
-<div id="heatmap-tooltip"></div>
-
-
-    <div id="container">
-      <div id="wrap">
-        <div id="header-nav">
-  <nav id="main-nav">
-    
-      
-        <span class="main-nav-link-wrap">
-          <div class="main-nav-icon icon rotate">
-             
-              &#xe62b;
-             
-          </div>
-          <a class="main-nav-link" href="/">Home</a>
-        </span>
-      
-        <span class="main-nav-link-wrap">
-          <div class="main-nav-icon icon rotate">
-             
-              &#xe62b;
-             
-          </div>
-          <a class="main-nav-link" href="/archives">Archives</a>
-        </span>
-      
-        <span class="main-nav-link-wrap">
-          <div class="main-nav-icon icon rotate">
-             
-              &#xe62b;
-             
-          </div>
-          <a class="main-nav-link" href="/about">About</a>
-        </span>
-      
-        <span class="main-nav-link-wrap">
-          <div class="main-nav-icon icon rotate">
-             
-              &#xe62b;
-             
-          </div>
-          <a class="main-nav-link" href="/friend">Friend</a>
-        </span>
-      
-    
-    <a id="main-nav-toggle" class="nav-icon"></a>
-  </nav>
-  <nav id="sub-nav">
-    
-      <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed" target="_blank"></a>
-    
-    
-    
-  </nav>
-  
-</div>
-<header id="header">
-  
-    
-      <picture>
-        
-      </picture>
-      
-        <img  fetchpriority="high" src="/images/banner.webp" alt="">
-      
-    
-  
-  <div id="header-outer">
-    <div id="header-title">
-      
-        
-        
-          <a href="/" id="logo">
-            <h1 data-aos="slide-up">Hexo</h1>
-          </a>
-        
-      
-      
-        
-        <h2 id="subtitle-wrap" data-aos="slide-down">
-          
-        </h2>
-      
-    </div>
-  </div>
-</header>
-
-        <div id="content"  class="sidebar-right" >
-          <aside id="sidebar">
-  
-  <div class="sidebar-wrapper-container ">
-  
-    
-    
-  
- 
-  <div class="sidebar-wrapper">
-    <div class="sidebar-wrap" data-aos="fade-up">
-      
-        <div class="sidebar-author">
-  <img data-src="/avatar/avatar.webp" data-sizes="auto" alt="余" class="lazyload">
-  <div class="sidebar-author-name">余</div>
-  <div class="sidebar-description"></div>
-</div>
-<div class="sidebar-state">
-  <div class="sidebar-state-article">
-    <div>Post</div>
-    <div class="sidebar-state-number">6</div>
-  </div>
-  <div class="sidebar-state-category">
-    <div>Category</div>
-    <div class="sidebar-state-number">0</div>
-  </div>
-  <div class="sidebar-state-tag">
-    <div>Tag</div>
-    <div class="sidebar-state-number">1</div>
-  </div>
-</div>
-<div class="sidebar-social">
-  
-</div>
-<div class="sidebar-menu">
-  
-    
-      <div class="sidebar-menu-link-wrap">
-        <a class="sidebar-menu-link-dummy" href="/" aria-label="Home"></a>
-        <div class="sidebar-menu-icon icon rotate">
-          
-            &#xe62b;
-          
-        </div>
-        <div class="sidebar-menu-link">Home</div>
-      </div>
-    
-      <div class="sidebar-menu-link-wrap">
-        <a class="sidebar-menu-link-dummy" href="/archives" aria-label="Archives"></a>
-        <div class="sidebar-menu-icon icon rotate">
-          
-            &#xe62b;
-          
-        </div>
-        <div class="sidebar-menu-link">Archives</div>
-      </div>
-    
-      <div class="sidebar-menu-link-wrap">
-        <a class="sidebar-menu-link-dummy" href="/about" aria-label="About"></a>
-        <div class="sidebar-menu-icon icon rotate">
-          
-            &#xe62b;
-          
-        </div>
-        <div class="sidebar-menu-link">About</div>
-      </div>
-    
-      <div class="sidebar-menu-link-wrap">
-        <a class="sidebar-menu-link-dummy" href="/friend" aria-label="Friend"></a>
-        <div class="sidebar-menu-icon icon rotate">
-          
-            &#xe62b;
-          
-        </div>
-        <div class="sidebar-menu-link">Friend</div>
-      </div>
-    
-  
-</div>
-
-      
-      
-    </div>
-  </div>
-  
-  <div class="sidebar-widget">
-  
-  </div>
-  
-  </div>
-  
-</aside>
-
-          <section id="main">
-  
-  
-    
-    
-      <div class="post-wrapper">
-  <div class="post-wrap-left" data-aos="fade-up">
-    
-      <a class="post-link" href="/2025/08/27/MySQL%E8%BF%90%E7%BB%B4%E7%AC%94%E8%AE%B0/" aria-label=""></a>
-    
-    
-    <div class="post-cover-left">
-      
-        
-        
-          <img data-src="/images/banner.webp" data-sizes="auto" alt="" class="lazyload">
-        
-      
-    </div>
-    <div class="post-info">
-      <div class="post-meta">
-        <span><span class="icon-calendar"></span>2025-08-27</span>
-        
-        <span><span class="icon-pencil"></span>8.8k words</span>
-        <span><span class="icon-clock"></span>36 mins</span>
-      </div>
-      <h2 class="post-title"></h2>
-      <article class="post-article">
-        
-          MySQL运维1.日志1.错误日志
-错误日志是 MySQL 中最重要的日志之一，它记录了当mysqld 启动和停止时，以及服务器在运行过程中发生任何严重错误时的相关信息。
-
-当数据库出现任何故障导致无法正常使用时，建议首先查看此日志。
-
-该日志是默认开启的，默认存放目录&amp;#x2F;var&amp;#x2F;log&amp;#x2F;，默认的日志文件名为mysqld.log。查看日志位置：
-
-show variables like &amp;#39;%log_error%&amp;#39;;
-1234567891011121314151617  ### 2.二进制日志#### 1.介绍* 二进制日志（binlog）记录了所有d
-        
-      </article>
-    </div>
-  </div>
-</div>
-      
-    
-      <div class="post-wrapper">
-  <div class="post-wrap-right" data-aos="fade-up">
-    
-      <a class="post-link" href="/2025/08/27/MySQL%E8%BF%9B%E9%98%B6%E7%AC%94%E8%AE%B0/" aria-label=""></a>
-    
-    
-    <div class="post-cover-right">
-      
-        
-        
-          <img data-src="/images/banner.webp" data-sizes="auto" alt="" class="lazyload">
-        
-      
-    </div>
-    <div class="post-info">
-      <div class="post-meta">
-        <span><span class="icon-calendar"></span>2025-08-27</span>
-        
-        <span><span class="icon-pencil"></span>17.6k words</span>
-        <span><span class="icon-clock"></span>65 mins</span>
-      </div>
-      <h2 class="post-title"></h2>
-      <article class="post-article">
-        
-          MySQL进阶1.储存引擎1.MySQL体系结构
-客户端连接器：PHP,Python，Java的JDBC等
-
-MySQL服务端：
-
-连接层：
-
-连接池，用于接收客户端的连接，完成连接的处理，认证授权（校验用户名密码），校验每个客户端的权限，相关安全方案，检查是否超过最大连接数
-
-
-服务层：SQL接口，完成缓存的查询，SQL的分析和优化，部分内置函数的执行。所有跨存储引擎的功能也在这一层实现，如过程，函数等
-
-SQL接口
-解析器
-查询优化器
-缓存
-
-
-引擎层：复杂数据的存储和提取，服务器通过API和存储引擎进行通信。其中含有多个可选择的引擎，不同的存储引擎有不同功能，也可以在此基础上扩展。
-
-可
-        
-      </article>
-    </div>
-  </div>
-</div>
-      
-    
-      <div class="post-wrapper">
-  <div class="post-wrap-left" data-aos="fade-up">
-    
-      <a class="post-link" href="/2025/08/27/MySQL%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/" aria-label=""></a>
-    
-    
-    <div class="post-cover-left">
-      
-        
-        
-          <img data-src="/images/banner.webp" data-sizes="auto" alt="" class="lazyload">
-        
-      
-    </div>
-    <div class="post-info">
-      <div class="post-meta">
-        <span><span class="icon-calendar"></span>2025-08-27</span>
-        
-        <span><span class="icon-pencil"></span>7.6k words</span>
-        <span><span class="icon-clock"></span>29 mins</span>
-      </div>
-      <h2 class="post-title"></h2>
-      <article class="post-article">
-        
-          MySQL基础1. 启动和关闭1.cmd
-win加r进入运行输入cmd，ctrl加shift加enter以管理员模式运行
-1net start mysql80
-
- 其中mysql80为服务名，同样以
-1net stop mysql80
-
-结束运行。
-
-
-2.服务
-win加r进入运行输入services.msc，进入后找到MySQL80右键运行或停止。
-
-2. 客户端连接1.MySQL提供的工具
-进入后直接输入密码连接。
-
-2.cmd
-win加r进入运行输入cmd，ctrl加shift加enter以管理员模式运行，（这里已经将mysql添加到环境变量，可以在任意路径下运行）输入
-1mysql -
-        
-      </article>
-    </div>
-  </div>
-</div>
-      
-    
-      <div class="post-wrapper">
-  <div class="post-wrap-right" data-aos="fade-up">
-    
-      <a class="post-link" href="/2025/02/24/%E5%B0%8F%E5%85%AD%E5%A3%AC%E8%B5%B7%E8%AF%BE%E5%99%A8/" aria-label="小六壬起课器"></a>
-    
-    
-    <div class="post-cover-right">
-      
-        
-        
-          <img data-src="/images/banner.webp" data-sizes="auto" alt="小六壬起课器" class="lazyload">
-        
-      
-    </div>
-    <div class="post-info">
-      <div class="post-meta">
-        <span><span class="icon-calendar"></span>2025-02-24</span>
-        
-        <span><span class="icon-pencil"></span>2.7k words</span>
-        <span><span class="icon-clock"></span>12 mins</span>
-      </div>
-      <h2 class="post-title">小六壬起课器</h2>
-      <article class="post-article">
-        
-          小六壬起课器.py（仅起到起课作用）​	小六壬，古代中国占卜法，古代主要用于军事韬略，尤以别名诸葛亮马前课著名。
-​	在所有术数中时间都是首位，所以第一则是获取当前用户时间。在运行时可能会遇到用户输入各种类型的数据，所以使用try来运行可能出错的代码，并且在报错后循环让用户重新输入。
-12345678910while True: #无限循环   try: #尝试运行可能出错的代码      time=int(input(&amp;quot;以24时制输入当地当前时:&amp;quot;)) #获取时间     except (ValueError, TypeError): #数值错误和数值类型错误时的处理  
-        
-      </article>
-    </div>
-  </div>
-</div>
-      
-    
-      <div class="post-wrapper">
-  <div class="post-wrap-left" data-aos="fade-up">
-    
-      <a class="post-link" href="/2025/02/08/1/" aria-label="第一篇文章"></a>
-    
-    
-    <div class="post-cover-left">
-      
-        
-        
-          <img data-src="/images/banner.webp" data-sizes="auto" alt="第一篇文章" class="lazyload">
-        
-      
-    </div>
-    <div class="post-info">
-      <div class="post-meta">
-        <span><span class="icon-calendar"></span>2025-02-08</span>
-        
-        <span><span class="icon-pencil"></span>1 word</span>
-        <span><span class="icon-clock"></span>1 min</span>
-      </div>
-      <h2 class="post-title">第一篇文章</h2>
-      <article class="post-article">
-        
-          123
-
-        
-      </article>
-    </div>
-  </div>
-</div>
-      
-    
-      <div class="post-wrapper">
-  <div class="post-wrap-right" data-aos="fade-up">
-    
-      <a class="post-link" href="/2025/02/08/hello-world/" aria-label="Hello World"></a>
-    
-    
-    <div class="post-cover-right">
-      
-        
-        
-          <img data-src="/images/banner.webp" data-sizes="auto" alt="Hello World" class="lazyload">
-        
-      
-    </div>
-    <div class="post-info">
-      <div class="post-meta">
-        <span><span class="icon-calendar"></span>2025-02-08</span>
-        
-        <span><span class="icon-pencil"></span>75 words</span>
-        <span><span class="icon-clock"></span>1 min</span>
-      </div>
-      <h2 class="post-title">Hello World</h2>
-      <article class="post-article">
-        
-          Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick StartCreate a new post1$ hexo new &amp;quot;My New Post&amp;quot;
-
-More info: Writing
-Run server1$ hexo ser
-        
-      </article>
-    </div>
-  </div>
-</div>
-      
-    
-  
-
-
-
-</section>
-        </div>
-        <footer id="footer">
-  <div style="width: 100%; overflow: hidden">
-    <div class="footer-line"></div>
-  </div>
-  <div id="footer-info">
-    
-    <div>
-      <span class="icon-copyright"></span>
-      
-      
-      
-        2020-2025
-      
-      <span class="footer-info-sep rotate"></span>
-      余
-    </div>
-    
-      <div>
-        Powered by&nbsp;<a href="https://hexo.io/" rel="noopener external nofollow noreferrer" target="_blank">Hexo</a>&nbsp;
-        Theme.<a href="https://github.com/D-Sketon/hexo-theme-reimu" rel="noopener external nofollow noreferrer" target="_blank">Reimu</a>
-      </div>
-    
-    
-      <div>
-        <span class="icon-brush"></span>
-        36.7k
-        &nbsp;|&nbsp;
-        <span class="icon-coffee"></span>
-        02:24
-      </div>
-    
-    
-    
-    
-    
-      <div>
-        <span class="icon-eye"></span>
-        <span id="busuanzi_container_site_pv">Number of visits&nbsp;<span id="busuanzi_value_site_pv"></span></span>
-        &nbsp;|&nbsp;
-        <span class="icon-user"></span>
-        <span id="busuanzi_container_site_uv">Number of visitors&nbsp;<span id="busuanzi_value_site_uv"></span></span>
-      </div>
-    
-  </div>
-</footer>
-
-        
-          <div class="sidebar-top">
-            <div class="sidebar-top-taichi rotate"></div>
-            <div class="arrow-up"></div>
-          </div>
-        
-        <div id="mask" class="hide"></div>
-      </div>
-      <nav id="mobile-nav">
-  <div class="sidebar-wrap">
-    
-      <div class="sidebar-author">
-  <img data-src="/avatar/avatar.webp" data-sizes="auto" alt="余" class="lazyload">
-  <div class="sidebar-author-name">余</div>
-  <div class="sidebar-description"></div>
-</div>
-<div class="sidebar-state">
-  <div class="sidebar-state-article">
-    <div>Post</div>
-    <div class="sidebar-state-number">6</div>
-  </div>
-  <div class="sidebar-state-category">
-    <div>Category</div>
-    <div class="sidebar-state-number">0</div>
-  </div>
-  <div class="sidebar-state-tag">
-    <div>Tag</div>
-    <div class="sidebar-state-number">1</div>
-  </div>
-</div>
-<div class="sidebar-social">
-  
-</div>
-<div class="sidebar-menu">
-  
-    
-      <div class="sidebar-menu-link-wrap">
-        <a class="sidebar-menu-link-dummy" href="/" aria-label="Home"></a>
-        <div class="sidebar-menu-icon icon rotate">
-          
-            &#xe62b;
-          
-        </div>
-        <div class="sidebar-menu-link">Home</div>
-      </div>
-    
-      <div class="sidebar-menu-link-wrap">
-        <a class="sidebar-menu-link-dummy" href="/archives" aria-label="Archives"></a>
-        <div class="sidebar-menu-icon icon rotate">
-          
-            &#xe62b;
-          
-        </div>
-        <div class="sidebar-menu-link">Archives</div>
-      </div>
-    
-      <div class="sidebar-menu-link-wrap">
-        <a class="sidebar-menu-link-dummy" href="/about" aria-label="About"></a>
-        <div class="sidebar-menu-icon icon rotate">
-          
-            &#xe62b;
-          
-        </div>
-        <div class="sidebar-menu-link">About</div>
-      </div>
-    
-      <div class="sidebar-menu-link-wrap">
-        <a class="sidebar-menu-link-dummy" href="/friend" aria-label="Friend"></a>
-        <div class="sidebar-menu-icon icon rotate">
-          
-            &#xe62b;
-          
-        </div>
-        <div class="sidebar-menu-link">Friend</div>
-      </div>
-    
-  
-</div>
-
-    
-  </div>
-  
-</nav>
-
-    </div>
-    
-    
-    
-    
-<script src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js" integrity="sha384-3gT&#x2F;vsepWkfz&#x2F;ff7PpWNUeMzeWoH3cDhm&#x2F;A8jM7ouoAK0&#x2F;fP&#x2F;9bcHHR5kHq2nf+e" crossorigin="anonymous"></script>
-
-
-<script src="https://npm.webcache.cn/clipboard@2.0.11/dist/clipboard.min.js" integrity="sha384-J08i8An&#x2F;QeARD9ExYpvphB8BsyOj3Gh2TSh1aLINKO3L0cMSH2dN3E22zFoXEi0Q" crossorigin="anonymous"></script>
-
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-  
-<script src="/js/aos.js"></script>
-
-  <script>
-    var aosInit = () => {
-      AOS.init({
-        duration: 1000,
-        easing: "ease",
-        once: true,
-        offset: 50,
-      });
-    };
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', aosInit);
-    } else {
-      aosInit();
-    }
-  </script>
-
-
-
-<script src="/js/pjax_script.js" data-pjax></script>
-
-
-
-
-
-
-
-  
-<script src="https://npm.webcache.cn/mouse-firework@0.1.1/dist/index.umd.js" integrity="sha384-8LyaidD9GPxQQgLJO&#x2F;WRw&#x2F;O2h3BoNq&#x2F;ApI&#x2F;ecpvM6RsrCz2qP2ppBXUKihP4V&#x2F;2d" crossorigin="anonymous"></script>
-
-  <script>
-    window.firework && window.firework(JSON.parse('{"excludeElements":["a","button"],"particles":[{"shape":"circle","move":["emit"],"easing":"easeOutExpo","colors":["var(--red-1)","var(--red-2)","var(--red-3)","var(--red-4)"],"number":20,"duration":[1200,1800],"shapeOptions":{"radius":[16,32],"alpha":[0.3,0.5]}},{"shape":"circle","move":["diffuse"],"easing":"easeOutExpo","colors":["var(--red-0)"],"number":1,"duration":[1200,1800],"shapeOptions":{"radius":20,"alpha":[0.2,0.5],"lineWidth":6}}]}'))
-  </script>
-
-
-
-
-
-
-
-
-
-
-<div id="lazy-script">
-  <div>
-       
-    
-    
-      
-    
-    
-  </div>
-</div>
-
-
-  <script>
-    console.log(String.raw`%c 
- ______     ______     __     __    __     __  __    
-/\  == \   /\  ___\   /\ \   /\ "-./  \   /\ \/\ \   
-\ \  __<   \ \  __\   \ \ \  \ \ \-./\ \  \ \ \_\ \  
- \ \_\ \_\  \ \_____\  \ \_\  \ \_\ \ \_\  \ \_____\ 
-  \/_/ /_/   \/_____/   \/_/   \/_/  \/_/   \/_____/ 
-                                                  
-`,'color: #ff5252;')
-    console.log('%c Theme.Reimu v' + '1.9.1' + ' %c https://github.com/D-Sketon/hexo-theme-reimu ', 'color: white; background: #ff5252; padding:5px 0;', 'padding:4px;border:1px solid #ff5252;')
-  </script>
-  
-
-
-
-  
-<script src="https://npm.webcache.cn/busuanzi@2.3.0/bsz.pure.mini.js" integrity="sha384-0M75wtSkhjIInv4coYlaJU83+OypaRCIq2SukQVQX04eGTCBXJDuWAbJet56id+S" crossorigin="anonymous" async></script>
-
-
-
-
-<script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.getRegistrations().then((registrations) => {
-      for (let registration of registrations) {
-        registration.unregister();
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
       }
-    });
-  }
-</script>
 
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
 
-
-
-
-
-
-
-
+      const theme = saveToLocal.get('theme')
     
-  </body>
-  </html>
-
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Hexo',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'home'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="page" id="body-wrap"><header class="full_page" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Hexo</span></a></span><div id="menus"></div></nav><div id="site-info"><h1 id="site-title">Hexo</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025/08/27/MySQL%E8%BF%90%E7%BB%B4%E7%AC%94%E8%AE%B0/" title="Untitled">Untitled</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2025-08-27T07:53:59.828Z" title="Created 2025-08-27 15:53:59">2025-08-27</time></span></div><div class="content">MySQL运维1.日志1.错误日志 错误日志是 MySQL 中最重要的日志之一，它记录了当mysqld 启动和停止时，以及服务器在运行过程中发生任何严重错误时的相关信息。  当数据库出现任何故障导致无法正常使用时，建议首先查看此日志。  该日志是默认开启的，默认存放目录&#x2F;var&#x2F;log&#x2F;，默认的日志文件名为mysqld.log。查看日志位置：  show variables like &#39;%log_error%&#39;; 1234567891011121314151617  ### 2.二进制日志#### 1.介绍* 二进制日志（binlog）记录了所有ddl（数据定义语言）语句和dml（数据操纵语言）语句，但不包括数据查询（select，show）语句* 作用：  * 灾难时的数据恢复，数据库崩溃后再次执行二进制日志中的内容就可以恢复  * MySQL的主从复制。在MySQL8版本中，默认二进制日志是开启的，涉及参数：  * ```sql    show variables like &#x27;%log_bin%&#x27;;  * 可以...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025/08/27/MySQL%E8%BF%9B%E9%98%B6%E7%AC%94%E8%AE%B0/" title="Untitled">Untitled</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2025-08-27T07:53:59.825Z" title="Created 2025-08-27 15:53:59">2025-08-27</time></span></div><div class="content">MySQL进阶1.储存引擎1.MySQL体系结构 客户端连接器：PHP,Python，Java的JDBC等  MySQL服务端：  连接层：  连接池，用于接收客户端的连接，完成连接的处理，认证授权（校验用户名密码），校验每个客户端的权限，相关安全方案，检查是否超过最大连接数   服务层：SQL接口，完成缓存的查询，SQL的分析和优化，部分内置函数的执行。所有跨存储引擎的功能也在这一层实现，如过程，函数等  SQL接口 解析器 查询优化器 缓存   引擎层：复杂数据的存储和提取，服务器通过API和存储引擎进行通信。其中含有多个可选择的引擎，不同的存储引擎有不同功能，也可以在此基础上扩展。  可插拔存储引擎 InnoDB（MySQL5.5后的默认引擎） NDB MyISAM ………     存储层：主要将数据存储在文件系统之上，并完成与存储引擎的交互  系统文件 文件和日志    2.储存引擎简介 存储数据，建立索引，查询&#x2F;更新数据等技术的实现方式。 存储引擎是基于表的，而不是基于库的，所以存储引擎也可以称为表类型  1.查询表的存储引擎 show create tabl...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025/08/27/MySQL%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/" title="Untitled">Untitled</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2025-08-27T07:53:59.821Z" title="Created 2025-08-27 15:53:59">2025-08-27</time></span></div><div class="content">MySQL基础1. 启动和关闭1.cmd win加r进入运行输入cmd，ctrl加shift加enter以管理员模式运行 1net start mysql80   其中mysql80为服务名，同样以 1net stop mysql80  结束运行。   2.服务 win加r进入运行输入services.msc，进入后找到MySQL80右键运行或停止。  2. 客户端连接1.MySQL提供的工具 进入后直接输入密码连接。  2.cmd win加r进入运行输入cmd，ctrl加shift加enter以管理员模式运行，（这里已经将mysql添加到环境变量，可以在任意路径下运行）输入 1mysql -h 127.0.0.1 -P 3306 -u root -p  ，其中-h后面跟指定地址，-P（大写）后跟指定端口，（这两个可以省略），-u后跟指定用户，以root用户进行连接，-p指定密码。   3. 数据库概念及模型1.概念 关系型数据库（RDBMS) 由二维表组成，以关系型模型为基础   使用表存储数据，格式统一，便于维护 使用SQL语句进行操作  2.数据模型 客户端连接MySQL的...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025/02/24/%E5%B0%8F%E5%85%AD%E5%A3%AC%E8%B5%B7%E8%AF%BE%E5%99%A8/" title="小六壬起课器">小六壬起课器</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2025-02-24T13:42:02.000Z" title="Created 2025-02-24 21:42:02">2025-02-24</time></span></div><div class="content">小六壬起课器.py（仅起到起课作用）​	小六壬，古代中国占卜法，古代主要用于军事韬略，尤以别名诸葛亮马前课著名。 ​	在所有术数中时间都是首位，所以第一则是获取当前用户时间。在运行时可能会遇到用户输入各种类型的数据，所以使用try来运行可能出错的代码，并且在报错后循环让用户重新输入。 12345678910while True: #无限循环   try: #尝试运行可能出错的代码      time=int(input(&quot;以24时制输入当地当前时:&quot;)) #获取时间     except (ValueError, TypeError): #数值错误和数值类型错误时的处理      print(&quot;错误,输入数字有误,例:当前13:11,则输入13&quot;)      continue #跳过下面的循环，防止因为上面错误导致time没有获取数值而使下面的判断报错   if time in list10: #判断输入数字是否为0~23      break #正常则执行下面的代码   else: #不符合则提示并循环      print(&quot;...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2025/02/08/1/" title="第一篇文章"><div class="post-bg" style="background: rgb(255,117,117)"></div></a></div><div class="recent-post-info"><a class="article-title" href="/2025/02/08/1/" title="第一篇文章">第一篇文章</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2025-02-08T07:16:16.000Z" title="Created 2025-02-08 15:16:16">2025-02-08</time></span></div><div class="content">123 </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025/02/08/hello-world/" title="Hello World">Hello World</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2025-02-08T07:12:25.347Z" title="Created 2025-02-08 15:12:25">2025-02-08</time></span></div><div class="content">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new &quot;My New Post&quot;  More info: Writing Run server1$ hexo server  More info: Server Generate static files1$ hexo generate  More info: Generating Deploy to remote sites1$ hexo deploy  More info: Deployment </div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">余</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/08/27/MySQL%E8%BF%90%E7%BB%B4%E7%AC%94%E8%AE%B0/" title="Untitled">Untitled</a><time datetime="2025-08-27T07:53:59.828Z" title="Created 2025-08-27 15:53:59">2025-08-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/08/27/MySQL%E8%BF%9B%E9%98%B6%E7%AC%94%E8%AE%B0/" title="Untitled">Untitled</a><time datetime="2025-08-27T07:53:59.825Z" title="Created 2025-08-27 15:53:59">2025-08-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/08/27/MySQL%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/" title="Untitled">Untitled</a><time datetime="2025-08-27T07:53:59.821Z" title="Created 2025-08-27 15:53:59">2025-08-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/02/24/%E5%B0%8F%E5%85%AD%E5%A3%AC%E8%B5%B7%E8%AF%BE%E5%99%A8/" title="小六壬起课器">小六壬起课器</a><time datetime="2025-02-24T13:42:02.000Z" title="Created 2025-02-24 21:42:02">2025-02-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/02/08/1/" title="第一篇文章"><div style="background: rgb(255,117,117)"></div></a><div class="content"><a class="title" href="/2025/02/08/1/" title="第一篇文章">第一篇文章</a><time datetime="2025-02-08T07:16:16.000Z" title="Created 2025-02-08 15:16:16">2025-02-08</time></div></div></div></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>Tags</span></div><div class="card-tag-cloud"><a href="/tags/%E6%9C%AF%E6%95%B0/" style="font-size: 1.1em; color: #999">术数</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>Archives</span>
+      
+    </div>
+  
+    <ul class="card-archive-list">
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/08/">
+            <span class="card-archive-list-date">
+              August 2025
+            </span>
+            <span class="card-archive-list-count">3</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/02/">
+            <span class="card-archive-list-date">
+              February 2025
+            </span>
+            <span class="card-archive-list-count">3</span>
+          </a>
+        </li>
+      
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Website Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article Count :</div><div class="item-count">6</div></div><div class="webinfo-item"><div class="item-name">Unique Visitors :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Page Views :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Last Update :</div><div class="item-count" id="last-push-date" data-lastPushDate="2025-08-27T09:28:35.849Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 By 余</span><span class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.4.3</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
