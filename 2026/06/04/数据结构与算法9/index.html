@@ -1,0 +1,602 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>数据结构与算法9 | 不做花看</title><meta name="author" content="余"><meta name="copyright" content="余"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="该文档介绍了图的基本概念，包括有向&#x2F;无向图、连通&#x2F;非连通图及有权图。图的表示方法有邻接矩阵（空间换时间）和邻接表（时间换空间）。操作对比显示邻接矩阵增删边快但内存大，邻接表节省空间但查找慢。图的遍历包括广度优先（BFS，借助队列）和深度优先（DFS，递归实现），时间复杂度均为O(|V|+|E|)。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构与算法9">
+<meta property="og:url" content="http://example.com/2026/06/04/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%959/index.html">
+<meta property="og:site_name" content="不做花看">
+<meta property="og:description" content="该文档介绍了图的基本概念，包括有向&#x2F;无向图、连通&#x2F;非连通图及有权图。图的表示方法有邻接矩阵（空间换时间）和邻接表（时间换空间）。操作对比显示邻接矩阵增删边快但内存大，邻接表节省空间但查找慢。图的遍历包括广度优先（BFS，借助队列）和深度优先（DFS，递归实现），时间复杂度均为O(|V|+|E|)。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/avatar.webp">
+<meta property="article:published_time" content="2026-06-04T04:46:52.978Z">
+<meta property="article:modified_time" content="2026-06-04T05:17:36.909Z">
+<meta property="article:author" content="余">
+<meta property="article:tag" content="数据结构与算法">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/avatar.webp"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "数据结构与算法9",
+  "url": "http://example.com/2026/06/04/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%959/",
+  "image": "http://example.com/img/avatar.webp",
+  "datePublished": "2026-06-04T04:46:52.978Z",
+  "dateModified": "2026-06-04T05:17:36.909Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "余",
+      "url": "http://example.com"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2026/06/04/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%959/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '数据结构与算法9',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><style> .post-content h1 { font-size:2.5rem !important; } .post-content h2 { font-size:2rem !important; } .post-content h3 { font-size:1.75rem !important; } .post-content h4 { font-size:1.5rem !important; } .post-content h5 { font-size:1.25rem !important; } .post-content h6 { font-size:1.1rem !important; } </style><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/avatar.webp" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">19</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">17</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/poems/"><i class="fa-fw fas fa-book"></i><span> 诗句库</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">不做花看</span></a><a class="nav-page-title" href="/"><span class="site-name">数据结构与算法9</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/poems/"><i class="fa-fw fas fa-book"></i><span> 诗句库</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">数据结构与算法9</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-06-04T04:46:52.978Z" title="发表于 2026-06-04 12:46:52">2026-06-04</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-06-04T05:17:36.909Z" title="更新于 2026-06-04 13:17:36">2026-06-04</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="9-图">9.图</h2>
+<h3 id="1-图">1.图</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>图</strong> （graph）是一种<strong>非线性</strong> 数据结构，由<strong>顶点</strong> （vertex）和<strong>边</strong> （edge）组成。</p>
+</li>
+<li class="lvl-2">
+<p>如果将顶点看作节点，将边看作连接各个节点的引用（指针），<strong>相较于线性关系（链表）和分治关系（树），网络关系（图）的自由度更高</strong>，因而更为复杂。</p>
+</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/pZeMGse"><img src="https://s41.ax1x.com/2025/12/03/pZeMGse.png" alt="pZeMGse.png"></a></p>
+<h4 id="1-图常见类型与术语">1.图常见类型与术语</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>根据<strong>边是否具有方向</strong> ，可分为<strong>无向图</strong> （undirected graph）和<strong>有向图</strong> （directed graph）</p>
+<ul class="lvl-2">
+<li class="lvl-4">在<strong>无向图</strong> 中，边表示两顶点之间的<strong>双向</strong> 连接关系</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/pZeMnaR"><img src="https://s41.ax1x.com/2025/12/03/pZeMnaR.png" alt="pZeMnaR.png"></a></p>
+<ul class="lvl-2">
+<li class="lvl-4">
+<p>在<strong>有向图</strong> 中，<strong>边具有方向性</strong> ，即 𝐴 → 𝐵 和 𝐴 ← 𝐵 两个方向的边是相互独立的</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/pZeMlRK"><img src="https://s41.ax1x.com/2025/12/03/pZeMlRK.png" alt="pZeMlRK.png"></a></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>根据<strong>所有顶点是否连通</strong> ，可分为<strong>连通图</strong> （connected graph）和<strong>非连通图</strong> （disconnected graph）</p>
+<ul class="lvl-2">
+<li class="lvl-4">对于<strong>连通图</strong> ，从某个顶点出发，可以到达其余任意顶点。</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/pZeMQG6"><img src="https://s41.ax1x.com/2025/12/03/pZeMQG6.png" alt="pZeMQG6.png"></a></p>
+<ul class="lvl-2">
+<li class="lvl-4">
+<p>对于<strong>非连通图</strong> ，从某个顶点出发，至少有一个顶点无法到达。</p>
+</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/pZeM8MD"><img src="https://s41.ax1x.com/2025/12/03/pZeM8MD.png" alt="pZeM8MD.png"></a></p>
+</li>
+<li class="lvl-2">
+<p>还可以为边添加<strong>权重</strong> 变量，从而得到<strong>有权图</strong> （weighted graph）</p>
+</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/pZeMMPx"><img src="https://s41.ax1x.com/2025/12/03/pZeMMPx.png" alt="pZeMMPx.png"></a></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>反之则为无权图</p>
+</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/pZeMuI1"><img src="https://s41.ax1x.com/2025/12/03/pZeMuI1.png" alt="pZeMuI1.png"></a></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>图数据结构包含以下常用术语。</p>
+<ul class="lvl-2">
+<li class="lvl-4"><strong>邻接</strong> （adjacency）：当<strong>两顶点之间存在边相连</strong> 时，称这两顶点<strong>邻接</strong> 。</li>
+<li class="lvl-4"><strong>路径</strong> （path）：从顶点 A 到顶点 B 经过的边构成的序列被称为从 A 到 B 的<strong>路径</strong> 。</li>
+<li class="lvl-4"><strong>度</strong> （degree）：<strong>一个顶点拥有的边数</strong> 。对于<strong>有向图</strong> ，<strong>入度</strong> （in‑degree）表示有<strong>多少条边指向该顶点</strong> ，<strong>出度</strong> （out‑degree）表示有<strong>多少条边从该顶点指出</strong> 。</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-图的表示">2.图的表示</h4>
+<h5 id="1-邻接矩阵">1.邻接矩阵</h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>设图的顶点数量为 𝑛 ，<strong>邻接矩阵</strong> （adjacency matrix）使用一个 𝑛 × 𝑛 大小的矩阵来表示图，每一行（列）代表一个顶点，矩阵元素代表边，用 1 或 0 表示两个顶点之间是否存在边</p>
+</li>
+<li class="lvl-2">
+<p>设邻接矩阵为 𝑀、顶点列表为 𝑉 ，那么矩阵元素 𝑀[𝑖, 𝑗] = 1 表示顶点 𝑉 [𝑖] 到顶点 𝑉 [𝑗]之间存在边，反之 𝑀[𝑖, 𝑗] = 0 表示两顶点之间无边</p>
+</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/pZeM1xO"><img src="https://s41.ax1x.com/2025/12/03/pZeM1xO.png" alt="pZeM1xO.png"></a></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>邻接矩阵具有以下特性。</p>
+<ul class="lvl-2">
+<li class="lvl-4">在简单图中，顶点不能与自身相连，此时邻接矩阵主对角线元素没有意义。</li>
+<li class="lvl-4">对于<strong>无向图</strong> ，两个方向的边等价，此时邻接矩阵<strong>关于主对角线对称</strong> 。</li>
+<li class="lvl-4">将邻接矩阵的元素从 1 和 0 替换为权重，则可表示有权图。</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>使用邻接矩阵表示图时，可以直接访问矩阵元素以获取边，因此增删查改操作的<strong>效率很高</strong> ，时间复杂度均为 𝑂(1) 。然而，矩阵的空间复杂度为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝑂</mi><mo stretchy="false">(</mo><msup><mi>𝑛</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">𝑂(𝑛^2 )</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> ，<strong>内存占用较多</strong></p>
+</li>
+</ul>
+<h5 id="2-邻接表">2.邻接表</h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>邻接表</strong> （adjacency list）使用 𝑛 个链表来表示图，链表<strong>节点</strong> 表示<strong>顶点</strong> 。第 𝑖 个链表对应顶点 𝑖 ，其中存储了该顶点的所有邻接顶点（与该顶点相连的顶点）</p>
+</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/pZn7J2D"><img src="https://s41.ax1x.com/2025/12/08/pZn7J2D.png" alt="pZn7J2D.png"></a></p>
+<p># 邻接表仅存储实际存在的边，而边的总数通常远小于 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>𝑛</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">𝑛^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span> ，因此它更加节省空间。</p>
+<p># 然而，在邻接表中需要通过遍历链表来查找边，因此其时间效率不如邻接矩阵</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>邻接表结构与哈希表中的<strong>链式地址</strong> 非常相似，因此也可以采用类似的方法来优化效率。</p>
+</li>
+<li class="lvl-2">
+<p>比如当链表较长时，可以将链表转化为 AVL 树或红黑树，从而将时间效率从 𝑂(𝑛) 优化至 𝑂(log 𝑛) ；</p>
+</li>
+<li class="lvl-2">
+<p>还可以把链表转换为哈希表，从而将时间复杂度降至 𝑂(1) 。</p>
+</li>
+</ul>
+<h4 id="3-图的常见应用">3.图的常见应用</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>顶点</th>
+<th>边</th>
+<th>图计算问题</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>社交网络</td>
+<td>用户</td>
+<td>好友关系</td>
+<td>潜在好友推荐</td>
+</tr>
+<tr>
+<td>地铁线路</td>
+<td>站点</td>
+<td>站点间的连通性</td>
+<td>最短路线推荐</td>
+</tr>
+<tr>
+<td>太阳系</td>
+<td>星体</td>
+<td>星体间的万有引力作用</td>
+<td>行星轨道计算</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-图的基础操作">2.图的基础操作</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>图的基础操作分为对<strong>边</strong> 的操作和对<strong>顶点</strong> 的操作</p>
+</li>
+<li class="lvl-2">
+<p>在<strong>邻接矩阵</strong> 和<strong>邻接表</strong> 两种表示方法下，有不同的实现方式</p>
+</li>
+</ul>
+<h4 id="1-基于邻接矩阵的实现">1.基于邻接矩阵的实现</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>添加或删除边</strong> ：直接在邻接矩阵中修改指定的边即可，使用 𝑂(1) 时间。而由于是无向图，因此需要同时更新两个方向的边。</p>
+</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/pZn7NKH"><img src="https://s41.ax1x.com/2025/12/08/pZn7NKH.png" alt="pZn7NKH.png"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/pZn7Yxe"><img src="https://s41.ax1x.com/2025/12/08/pZn7Yxe.png" alt="pZn7Yxe.png"></a></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>添加顶点</strong> ：在邻接矩阵的尾部添加一行一列，并全部填 0 即可，使用 𝑂(𝑛) 时间。</p>
+</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/pZn78PK"><img src="https://s41.ax1x.com/2025/12/08/pZn78PK.png" alt="pZn78PK.png"></a></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>删除顶点</strong> ：在邻接矩阵中删除一行一列。当删除首行首列时达到最差情况，需要将 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>𝑛</mi><mo>−</mo><mn>1</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">(𝑛−1)^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span> 个元素“向左上移动”，从而使用 𝑂(<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>𝑛</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">𝑛^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span> )时间。</p>
+</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/pZn7G8O"><img src="https://s41.ax1x.com/2025/12/08/pZn7G8O.png" alt="pZn7G8O.png"></a></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>初始化</strong> ：传入 𝑛 个顶点，初始化长度为 𝑛 的顶点列表 vertices ，使用 𝑂(𝑛) 时间；初始化 𝑛 × 𝑛 大小的邻接矩阵 adjMat ，使用 𝑂(<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>𝑛</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">𝑛^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span> ) 时间。</p>
+</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/pZn7Urd"><img src="https://s41.ax1x.com/2025/12/08/pZn7Urd.png" alt="pZn7Urd.png"></a></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>代码实现</p>
+</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 基于邻接矩阵实现的无向图结构体 */</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">    <span class="type">int</span> vertices[MAX_SIZE];</span><br><span class="line">    <span class="type">int</span> adjMat[MAX_SIZE][MAX_SIZE];</span><br><span class="line">    <span class="type">int</span> size;</span><br><span class="line">&#125; GraphAdjMat;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 构造函数 */</span></span><br><span class="line">GraphAdjMat *<span class="title function_">newGraphAdjMat</span><span class="params">()</span> &#123;</span><br><span class="line">    GraphAdjMat *graph = (GraphAdjMat *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(GraphAdjMat));</span><br><span class="line">    graph-&gt;size = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; MAX_SIZE; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; MAX_SIZE; j++) &#123;</span><br><span class="line">            graph-&gt;adjMat[i][j] = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> graph;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 析构函数 */</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">delGraphAdjMat</span><span class="params">(GraphAdjMat *graph)</span> &#123;</span><br><span class="line">    <span class="built_in">free</span>(graph);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 添加顶点 */</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">addVertex</span><span class="params">(GraphAdjMat *graph, <span class="type">int</span> val)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (graph-&gt;size == MAX_SIZE) &#123;</span><br><span class="line">        <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">&quot; 图的顶点数量已达最大值\n&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 添加第 n 个顶点，并将第 n 行和列置零</span></span><br><span class="line">    <span class="type">int</span> n = graph-&gt;size;</span><br><span class="line">    graph-&gt;vertices[n] = val;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        graph-&gt;adjMat[n][i] = graph-&gt;adjMat[i][n] = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    graph-&gt;size++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 删除顶点 */</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">removeVertex</span><span class="params">(GraphAdjMat *graph, <span class="type">int</span> index)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (index &lt; <span class="number">0</span> || index &gt;= graph-&gt;size) &#123;</span><br><span class="line">        <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">&quot; 顶点索引越界\n&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 在顶点列表中移除索引 index 的顶点</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = index; i &lt; graph-&gt;size - <span class="number">1</span>; i++) &#123;</span><br><span class="line">        graph-&gt;vertices[i] = graph-&gt;vertices[i + <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 在邻接矩阵中删除索引 index 的行</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = index; i &lt; graph-&gt;size - <span class="number">1</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; graph-&gt;size; j++) &#123;</span><br><span class="line">            graph-&gt;adjMat[i][j] = graph-&gt;adjMat[i + <span class="number">1</span>][j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 在邻接矩阵中删除索引 index 的列</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; graph-&gt;size; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = index; j &lt; graph-&gt;size - <span class="number">1</span>; j++) &#123;</span><br><span class="line">            graph-&gt;adjMat[i][j] = graph-&gt;adjMat[i][j + <span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    graph-&gt;size--;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 添加边 */</span></span><br><span class="line"><span class="comment">// 参数 i, j 对应 vertices 元素索引</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">addEdge</span><span class="params">(GraphAdjMat *graph, <span class="type">int</span> i, <span class="type">int</span> j)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (i &lt; <span class="number">0</span> || j &lt; <span class="number">0</span> || i &gt;= graph-&gt;size || j &gt;= graph-&gt;size || i == j) &#123;</span><br><span class="line">        <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">&quot; 边索引越界或相等\n&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    graph-&gt;adjMat[i][j] = <span class="number">1</span>;</span><br><span class="line">    graph-&gt;adjMat[j][i] = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 删除边 */</span></span><br><span class="line"><span class="comment">// 参数 i, j 对应 vertices 元素索引</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">removeEdge</span><span class="params">(GraphAdjMat *graph, <span class="type">int</span> i, <span class="type">int</span> j)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (i &lt; <span class="number">0</span> || j &lt; <span class="number">0</span> || i &gt;= graph-&gt;size || j &gt;= graph-&gt;size || i == j) &#123;</span><br><span class="line">        <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">&quot; 边索引越界或相等\n&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    graph-&gt;adjMat[i][j] = <span class="number">0</span>;</span><br><span class="line">    graph-&gt;adjMat[j][i] = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 打印邻接矩阵 */</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">printGraphAdjMat</span><span class="params">(GraphAdjMat *graph)</span> &#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot; 顶点列表 = &quot;</span>);</span><br><span class="line">    printArray(graph-&gt;vertices, graph-&gt;size);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot; 邻接矩阵 =\n&quot;</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; graph-&gt;size; i++) &#123;</span><br><span class="line">        printArray(graph-&gt;adjMat[i], graph-&gt;size);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2-基于邻接表的实现">2.基于邻接表的实现</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>设无向图的顶点总数为 𝑛、边总数为 𝑚</p>
+</li>
+<li class="lvl-2">
+<p><strong>添加边</strong> ：在顶点对应<strong>链表的末尾</strong> 添加边即可，使用 𝑂(1) 时间。因为是无向图，所以需要同时添加两个方向的边。</p>
+</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/pZuXJ10"><img src="https://s41.ax1x.com/2025/12/10/pZuXJ10.png" alt="pZuXJ10.png"></a></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>删除边</strong> ：在顶点对应链表中查找并删除指定边，使用 𝑂(𝑚) 时间。在无向图中，需要同时删除两个方向的边</p>
+</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/pZn7wVI"><img src="https://s41.ax1x.com/2025/12/08/pZn7wVI.png" alt="pZn7wVI.png"></a></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>添加顶点</strong> ：在邻接表中添加一个链表，并将新增顶点作为链表头节点，使用 𝑂(1) 时间。</p>
+</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/pZuXYcV"><img src="https://s41.ax1x.com/2025/12/10/pZuXYcV.png" alt="pZuXYcV.png"></a></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>删除顶点</strong> ：需遍历整个邻接表，删除包含指定顶点的所有边，使用 𝑂(𝑛 + 𝑚) 时间。</p>
+</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/pZuXtXT"><img src="https://s41.ax1x.com/2025/12/10/pZuXtXT.png" alt="pZuXtXT.png"></a></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>初始化</strong> ：在邻接表中创建 𝑛 个顶点和 2𝑚 条边，使用 𝑂(𝑛 + 𝑚) 时间。</p>
+</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/pZn7aqA"><img src="https://s41.ax1x.com/2025/12/08/pZn7aqA.png" alt="pZn7aqA.png"></a></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>代码实现</p>
+</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 节点结构体 */</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">AdjListNode</span> &#123;</span></span><br><span class="line">    Vertex *vertex; <span class="comment">// 顶点</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">AdjListNode</span> *<span class="title">next</span>;</span> <span class="comment">// 后继节点</span></span><br><span class="line">&#125; AdjListNode;</span><br><span class="line"><span class="comment">/* 查找顶点对应的节点 */</span></span><br><span class="line">AdjListNode *<span class="title function_">findNode</span><span class="params">(GraphAdjList *graph, Vertex *vet)</span> &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; graph-&gt;size; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (graph-&gt;heads[i]-&gt;vertex == vet) &#123;</span><br><span class="line">            <span class="keyword">return</span> graph-&gt;heads[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 添加边辅助函数 */</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">addEdgeHelper</span><span class="params">(AdjListNode *head, Vertex *vet)</span> &#123;</span><br><span class="line">    AdjListNode *node = (AdjListNode *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(AdjListNode));</span><br><span class="line">    node-&gt;vertex = vet;</span><br><span class="line">    <span class="comment">// 头插法</span></span><br><span class="line">    node-&gt;next = head-&gt;next;</span><br><span class="line">    head-&gt;next = node;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 删除边辅助函数 */</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">removeEdgeHelper</span><span class="params">(AdjListNode *head, Vertex *vet)</span> &#123;</span><br><span class="line">    AdjListNode *pre = head;</span><br><span class="line">    AdjListNode *cur = head-&gt;next;</span><br><span class="line">    <span class="comment">// 在链表中搜索 vet 对应节点</span></span><br><span class="line">    <span class="keyword">while</span> (cur != <span class="literal">NULL</span> &amp;&amp; cur-&gt;vertex != vet) &#123;</span><br><span class="line">        pre = cur;</span><br><span class="line">        cur = cur-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (cur == <span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    <span class="comment">// 将 vet 对应节点从链表中删除</span></span><br><span class="line">    pre-&gt;next = cur-&gt;next;</span><br><span class="line">    <span class="comment">// 释放内存</span></span><br><span class="line">    <span class="built_in">free</span>(cur);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 基于邻接表实现的无向图类 */</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">    AdjListNode *heads[MAX_SIZE]; <span class="comment">// 节点数组</span></span><br><span class="line">    <span class="type">int</span> size; <span class="comment">// 节点数量</span></span><br><span class="line">&#125; GraphAdjList;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 构造函数 */</span></span><br><span class="line">GraphAdjList *<span class="title function_">newGraphAdjList</span><span class="params">()</span> &#123;</span><br><span class="line">    GraphAdjList *graph = (GraphAdjList *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(GraphAdjList));</span><br><span class="line">    <span class="keyword">if</span> (!graph) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    graph-&gt;size = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; MAX_SIZE; i++) &#123;</span><br><span class="line">        graph-&gt;heads[i] = <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> graph;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 析构函数 */</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">delGraphAdjList</span><span class="params">(GraphAdjList *graph)</span> &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; graph-&gt;size; i++) &#123;</span><br><span class="line">        AdjListNode *cur = graph-&gt;heads[i];</span><br><span class="line">        <span class="keyword">while</span> (cur != <span class="literal">NULL</span>) &#123;</span><br><span class="line">            AdjListNode *next = cur-&gt;next;</span><br><span class="line">            <span class="keyword">if</span> (cur != graph-&gt;heads[i]) &#123;</span><br><span class="line">                <span class="built_in">free</span>(cur);</span><br><span class="line">            &#125;</span><br><span class="line">            cur = next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">free</span>(graph-&gt;heads[i]-&gt;vertex);</span><br><span class="line">        <span class="built_in">free</span>(graph-&gt;heads[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">free</span>(graph);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 查找顶点对应的节点 */</span></span><br><span class="line">AdjListNode *<span class="title function_">findNode</span><span class="params">(GraphAdjList *graph, Vertex *vet)</span> &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; graph-&gt;size; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (graph-&gt;heads[i]-&gt;vertex == vet) &#123;</span><br><span class="line">            <span class="keyword">return</span> graph-&gt;heads[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 添加边 */</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">addEdge</span><span class="params">(GraphAdjList *graph, Vertex *vet1, Vertex *vet2)</span> &#123;</span><br><span class="line">    AdjListNode *head1 = findNode(graph, vet1);</span><br><span class="line">    AdjListNode *head2 = findNode(graph, vet2);</span><br><span class="line">    assert(head1 != <span class="literal">NULL</span> &amp;&amp; head2 != <span class="literal">NULL</span> &amp;&amp; head1 != head2);</span><br><span class="line">    <span class="comment">// 添加边 vet1 - vet2</span></span><br><span class="line">    addEdgeHelper(head1, vet2);</span><br><span class="line">    addEdgeHelper(head2, vet1);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 删除边 */</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">removeEdge</span><span class="params">(GraphAdjList *graph, Vertex *vet1, Vertex *vet2)</span> &#123;</span><br><span class="line">    AdjListNode *head1 = findNode(graph, vet1);</span><br><span class="line">    AdjListNode *head2 = findNode(graph, vet2);</span><br><span class="line">    assert(head1 != <span class="literal">NULL</span> &amp;&amp; head2 != <span class="literal">NULL</span>);</span><br><span class="line">    <span class="comment">// 删除边 vet1 - vet2</span></span><br><span class="line">    removeEdgeHelper(head1, head2-&gt;vertex);</span><br><span class="line">    removeEdgeHelper(head2, head1-&gt;vertex);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 添加顶点 */</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">addVertex</span><span class="params">(GraphAdjList *graph, Vertex *vet)</span> &#123;</span><br><span class="line">    assert(graph != <span class="literal">NULL</span> &amp;&amp; graph-&gt;size &lt; MAX_SIZE);</span><br><span class="line">    AdjListNode *head = (AdjListNode *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(AdjListNode));</span><br><span class="line">    head-&gt;vertex = vet;</span><br><span class="line">    head-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="comment">// 在邻接表中添加一个新链表</span></span><br><span class="line">    graph-&gt;heads[graph-&gt;size++] = head;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 删除顶点 */</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">removeVertex</span><span class="params">(GraphAdjList *graph, Vertex *vet)</span> &#123;</span><br><span class="line">    AdjListNode *node = findNode(graph, vet);</span><br><span class="line">    assert(node != <span class="literal">NULL</span>);</span><br><span class="line">    <span class="comment">// 在邻接表中删除顶点 vet 对应的链表</span></span><br><span class="line">    AdjListNode *cur = node, *pre = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">while</span> (cur) &#123;</span><br><span class="line">        pre = cur;</span><br><span class="line">        cur = cur-&gt;next;</span><br><span class="line">        <span class="built_in">free</span>(pre);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 遍历其他顶点的链表，删除所有包含 vet 的边</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; graph-&gt;size; i++) &#123;</span><br><span class="line">        cur = graph-&gt;heads[i];</span><br><span class="line">        pre = <span class="literal">NULL</span>;</span><br><span class="line">        <span class="keyword">while</span> (cur) &#123;</span><br><span class="line">            pre = cur;</span><br><span class="line">            cur = cur-&gt;next;</span><br><span class="line">            <span class="keyword">if</span> (cur &amp;&amp; cur-&gt;vertex == vet) &#123;</span><br><span class="line">                pre-&gt;next = cur-&gt;next;</span><br><span class="line">                <span class="built_in">free</span>(cur);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 将该顶点之后的顶点向前移动，以填补空缺</span></span><br><span class="line">    <span class="type">int</span> i;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; graph-&gt;size; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (graph-&gt;heads[i] == node)</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = i; j &lt; graph-&gt;size - <span class="number">1</span>; j++) &#123;</span><br><span class="line">        graph-&gt;heads[j] = graph-&gt;heads[j + <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    graph-&gt;size--;</span><br><span class="line">    <span class="built_in">free</span>(vet);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p># 可以使用列表（动态数组）来代替链表</p>
+<p># 使用哈希表来存储邻接表</p>
+<h4 id="3-效率对比">3.效率对比</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>设图中共有 𝑛 个顶点和 𝑚 条边</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>邻接矩阵</th>
+<th>邻接表（链表）</th>
+<th>邻接表（哈希表）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>判断是否邻接</td>
+<td>𝑂(1)</td>
+<td>𝑂(𝑚)</td>
+<td>𝑂(1)</td>
+</tr>
+<tr>
+<td>添加边</td>
+<td>𝑂(1)</td>
+<td>𝑂(1)</td>
+<td>𝑂(1)</td>
+</tr>
+<tr>
+<td>删除边</td>
+<td>𝑂(1)</td>
+<td>𝑂(𝑚)</td>
+<td>𝑂(1)</td>
+</tr>
+<tr>
+<td>添加顶点</td>
+<td>𝑂(𝑛)</td>
+<td>𝑂(1)</td>
+<td>𝑂(1)</td>
+</tr>
+<tr>
+<td>删除顶点</td>
+<td>𝑂(<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>𝑛</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">𝑛^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span> )</td>
+<td>𝑂(𝑛 + 𝑚)</td>
+<td>𝑂(𝑛)</td>
+</tr>
+<tr>
+<td>内存空间占用</td>
+<td>𝑂(<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>𝑛</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">𝑛^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span> )</td>
+<td>𝑂(𝑛 + 𝑚)</td>
+<td>𝑂(𝑛 + 𝑚)</td>
+</tr>
+</tbody>
+</table>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>实际上，在邻接矩阵中操作边的效率更高，只需一次数组访问或赋值操作即可。</p>
+</li>
+<li class="lvl-2">
+<p>综合来看，<strong>邻接矩阵</strong> 体现了<strong>以空间换时间</strong> 的原则，而<strong>邻接表</strong> 体现了<strong>以时间换空间</strong> 的原则。</p>
+</li>
+</ul>
+<h3 id="3-图的遍历">3.图的遍历</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>图的遍历方式也可分为两种：<strong>广度优先遍历</strong> 和<strong>深度优先遍历</strong></p>
+</li>
+</ul>
+<h4 id="1-广度优先遍历">1.广度优先遍历</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>广度优先遍历</strong> （BFS）是一种由近及远的遍历方式，从某个节点出发，<strong>始终优先访问距离最近的顶点</strong> ，并一层层向外扩张</p>
+</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/pmV5knI"><img src="https://s41.ax1x.com/2026/06/04/pmV5knI.png" alt="pmV5knI.png"></a></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>从左上角顶点出发，首先遍历该顶点的所有邻接顶点，然后遍历下一个顶点的所有邻接顶点，以此类推，直至所有顶点访问完毕。</p>
+</li>
+</ul>
+<h5 id="1-算法实现">1.算法实现</h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>BFS 通常借助队列来实现，队列具有<strong>先入先出</strong> 的性质，这与 BFS 的<strong>由近及远</strong> 的思想异曲同工。</p>
+<ul class="lvl-2">
+<li class="lvl-4">1.将遍历起始顶点 startVet 加入队列，并开启循环。</li>
+<li class="lvl-4">2.在循环的每轮迭代中，弹出队首顶点并记录访问，然后将该顶点的所有邻接顶点加入到队列尾部。</li>
+<li class="lvl-4">3.循环步骤 2. ，直到所有顶点被访问完毕后结束。</li>
+</ul>
+</li>
+</ul>
+<p># 为了防止重复遍历顶点，需要借助一个哈希集合 visited 来记录哪些节点已被访问</p>
+<p># 哈希集合可以看作一个只存储 key 而不存储 value 的哈希表，它可以在 𝑂(1) 时间复杂度下进行 key的增删查改操作。根据 key 的唯一性，哈希集合通常用于数据去重等场景。</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>代码实现</p>
+</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 节点队列结构体 */</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">    Vertex *vertices[MAX_SIZE];</span><br><span class="line">    <span class="type">int</span> front, rear, size;</span><br><span class="line">&#125; Queue;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 构造函数 */</span></span><br><span class="line">Queue *<span class="title function_">newQueue</span><span class="params">()</span> &#123;</span><br><span class="line">    Queue *q = (Queue *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Queue));</span><br><span class="line">    q-&gt;front = q-&gt;rear = q-&gt;size = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> q;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 判断队列是否为空 */</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">isEmpty</span><span class="params">(Queue *q)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> q-&gt;size == <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 入队操作 */</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">enqueue</span><span class="params">(Queue *q, Vertex *vet)</span> &#123;</span><br><span class="line">    q-&gt;vertices[q-&gt;rear] = vet;</span><br><span class="line">    q-&gt;rear = (q-&gt;rear + <span class="number">1</span>) % MAX_SIZE;</span><br><span class="line">    q-&gt;size++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 出队操作 */</span></span><br><span class="line">Vertex *<span class="title function_">dequeue</span><span class="params">(Queue *q)</span> &#123;</span><br><span class="line">    Vertex *vet = q-&gt;vertices[q-&gt;front];</span><br><span class="line">    q-&gt;front = (q-&gt;front + <span class="number">1</span>) % MAX_SIZE;</span><br><span class="line">    q-&gt;size--;</span><br><span class="line">    <span class="keyword">return</span> vet;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 检查顶点是否已被访问 */</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">isVisited</span><span class="params">(Vertex **visited, <span class="type">int</span> size, Vertex *vet)</span> &#123;</span><br><span class="line">    <span class="comment">// 遍历查找节点，使用 O(n) 时间</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; size; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (visited[i] == vet)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 广度优先遍历 */</span></span><br><span class="line"><span class="comment">// 使用邻接表来表示图，以便获取指定顶点的所有邻接顶点</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">graphBFS</span><span class="params">(GraphAdjList *graph, Vertex *startVet, Vertex **res, <span class="type">int</span> *resSize, Vertex **visited, <span class="type">int</span></span></span><br><span class="line"><span class="params">	*visitedSize)</span> &#123; </span><br><span class="line">    <span class="comment">// 队列用于实现 BFS</span></span><br><span class="line">    Queue *<span class="built_in">queue</span> = newQueue();</span><br><span class="line">    enqueue(<span class="built_in">queue</span>, startVet);</span><br><span class="line">    visited[(*visitedSize)++] = startVet;</span><br><span class="line">    <span class="comment">// 以顶点 vet 为起点，循环直至访问完所有顶点</span></span><br><span class="line">    <span class="keyword">while</span> (!isEmpty(<span class="built_in">queue</span>)) &#123;</span><br><span class="line">        Vertex *vet = dequeue(<span class="built_in">queue</span>); <span class="comment">// 队首顶点出队</span></span><br><span class="line">        res[(*resSize)++] = vet; <span class="comment">// 记录访问顶点</span></span><br><span class="line">        <span class="comment">// 遍历该顶点的所有邻接顶点</span></span><br><span class="line">        AdjListNode *node = findNode(graph, vet);</span><br><span class="line">        <span class="keyword">while</span> (node != <span class="literal">NULL</span>) &#123;</span><br><span class="line">            <span class="comment">// 跳过已被访问的顶点</span></span><br><span class="line">            <span class="keyword">if</span> (!isVisited(visited, *visitedSize, node-&gt;vertex)) &#123;</span><br><span class="line">                enqueue(<span class="built_in">queue</span>, node-&gt;vertex); <span class="comment">// 只入队未访问的顶点</span></span><br><span class="line">                visited[(*visitedSize)++] = node-&gt;vertex; <span class="comment">// 标记该顶点已被访问</span></span><br><span class="line">            &#125;</span><br><span class="line">            node = node-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 释放内存</span></span><br><span class="line">    <span class="built_in">free</span>(<span class="built_in">queue</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>演示</p>
+</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/pZuXaBF"><img src="https://s41.ax1x.com/2025/12/10/pZuXaBF.png" alt="pZuXaBF.png"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/pZuXUnU"><img src="https://s41.ax1x.com/2025/12/10/pZuXUnU.png" alt="pZuXUnU.png"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/pZuXd74"><img src="https://s41.ax1x.com/2025/12/10/pZuXd74.png" alt="pZuXd74.png"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/pZuX0AJ"><img src="https://s41.ax1x.com/2025/12/10/pZuX0AJ.png" alt="pZuX0AJ.png"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/pZuXBN9"><img src="https://s41.ax1x.com/2025/12/10/pZuXBN9.png" alt="pZuXBN9.png"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/pmV5C1H"><img src="https://s41.ax1x.com/2026/06/04/pmV5C1H.png" alt="pmV5C1H.png"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/pmV5Pcd"><img src="https://s41.ax1x.com/2026/06/04/pmV5Pcd.png" alt="pmV5Pcd.png"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/pmV5ShD"><img src="https://s41.ax1x.com/2026/06/04/pmV5ShD.png" alt="pmV5ShD.png"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/pmV4j76"><img src="https://s41.ax1x.com/2026/06/04/pmV4j76.png" alt="pmV4j76.png"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/pmV4ztO"><img src="https://s41.ax1x.com/2026/06/04/pmV4ztO.png" alt="pmV4ztO.png"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/pmV5ijA"><img src="https://s41.ax1x.com/2026/06/04/pmV5ijA.png" alt="pmV5ijA.png"></a></p>
+<p># <strong>广度优先遍历</strong> 的序列不唯一。广度优先遍历只要求按<strong>由近及远</strong> 的顺序遍历，而多个相同距离的顶点的遍历顺序允许被任意打乱。</p>
+<h5 id="2-复杂度分析">2.复杂度分析</h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>时间复杂度</strong> ：所有顶点都会入队并出队一次，使用 𝑂(|𝑉 |) 时间；在遍历邻接顶点的过程中，由于是无向图，因此所有边都会被访问 2 次，使用 𝑂(2|𝐸|) 时间；总体使用 𝑂(|𝑉 | + |𝐸|) 时间。</p>
+</li>
+<li class="lvl-2">
+<p><strong>空间复杂度</strong> ：列表 res ，哈希集合 visited ，队列 que 中的顶点数量最多为 |𝑉 | ，使用 𝑂(|𝑉 |) 空间。</p>
+</li>
+</ul>
+<h4 id="2-深度优先遍历">2.深度优先遍历</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>深度优先遍历（DFS）是一种优先走到底、无路可走再回头的遍历方式</p>
+</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/pmV599e"><img src="https://s41.ax1x.com/2026/06/04/pmV599e.png" alt="pmV599e.png"></a></p>
+<h5 id="1-算法实现-2">1.算法实现</h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>基于递归来实现</p>
+</li>
+<li class="lvl-2">
+<p>也需要借助一个哈希集合 visited 来记录已被访问的顶点，以避免重复访问顶点。</p>
+</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 检查顶点是否已被访问 */</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">isVisited</span><span class="params">(Vertex **res, <span class="type">int</span> size, Vertex *vet)</span> &#123;</span><br><span class="line">    <span class="comment">// 遍历查找节点，使用 O(n) 时间</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; size; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (res[i] == vet) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 深度优先遍历辅助函数 */</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">dfs</span><span class="params">(GraphAdjList *graph, Vertex **res, <span class="type">int</span> *resSize, Vertex *vet)</span> &#123;</span><br><span class="line">    <span class="comment">// 记录访问顶点</span></span><br><span class="line">    res[(*resSize)++] = vet;</span><br><span class="line">    <span class="comment">// 遍历该顶点的所有邻接顶点</span></span><br><span class="line">    AdjListNode *node = findNode(graph, vet);</span><br><span class="line">    <span class="keyword">while</span> (node != <span class="literal">NULL</span>) &#123;</span><br><span class="line">        <span class="comment">// 跳过已被访问的顶点</span></span><br><span class="line">        <span class="keyword">if</span> (!isVisited(res, *resSize, node-&gt;vertex)) &#123;</span><br><span class="line">            <span class="comment">// 递归访问邻接顶点</span></span><br><span class="line">            dfs(graph, res, resSize, node-&gt;vertex);</span><br><span class="line">        &#125;</span><br><span class="line">        node = node-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 深度优先遍历 */</span></span><br><span class="line"><span class="comment">// 使用邻接表来表示图，以便获取指定顶点的所有邻接顶点</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">graphDFS</span><span class="params">(GraphAdjList *graph, Vertex *startVet, Vertex **res, <span class="type">int</span> *resSize)</span> &#123;</span><br><span class="line">    dfs(graph, res, resSize, startVet);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p># 与广度优先遍历类似，深度优先遍历序列的顺序也不是唯一的。给定某顶点，先往哪个方向探索都可以，即邻接顶点的顺序可以任意打乱，都是深度优先遍历。</p>
+<p>以树的遍历为例，“根 → 左 → 右”“左 → 根 → 右” “左 → 右 → 根”分别对应前序、中序、后序遍历，它们展示了三种遍历优先级，然而这三者都属于深度优先遍历。</p>
+<h5 id="2-复杂度分析-2">2.复杂度分析</h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>时间复杂度</strong>：所有顶点都会被访问 1 次，使用 𝑂(|𝑉 |) 时间；所有边都会被访问 2 次，使用 𝑂(2|𝐸|) 时间；总体使用 𝑂(|𝑉 | + |𝐸|) 时间。</p>
+</li>
+<li class="lvl-2">
+<p><strong>空间复杂度</strong>：列表 res ，哈希集合 visited 顶点数量最多为 |𝑉 | ，递归深度最大为 |𝑉 | ，因此使用 𝑂(|𝑉 |)空间。</p>
+</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">余</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2026/06/04/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%959/">http://example.com/2026/06/04/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%959/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://example.com" target="_blank">不做花看</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a></div><div class="post-share"><div class="social-share" data-image="/img/avatar.webp" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2026/06/04/%E8%B4%AA%E5%BF%83/" title="算法题贪心"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">算法题贪心</div></div><div class="info-2"><div class="info-item-1">算法题</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2025/12/11/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%958/" title="数据结构与算法8"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-12-11</div><div class="info-item-2">数据结构与算法8</div></div><div class="info-2"><div class="info-item-1">本文系统介绍堆数据结构，包括定义、存储与基本操作，详细分析入堆、出堆的堆化过程，阐述两种建堆方法及其时间复杂度，最后探讨堆在Top-k问题中的高效应用。全文结合代码与图示，兼顾理论与实践。</div></div></div></a><a class="pagination-related" href="/2025/12/11/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%951-7/" title="数据结构与算法1-7"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-12-11</div><div class="info-item-2">数据结构与算法1-7</div></div><div class="info-2"><div class="info-item-1">本文系统梳理数据结构与算法的核心知识，涵盖算法定义、复杂度分析、迭代与递归，以及数组、链表、栈、队列、哈希表、二叉树等关键数据结构的原理、实现与应用，适合计算机学习者构建系统的算法与数据结构基础。</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/avatar.webp" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">余</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">19</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">17</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/lucime470"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#9-%E5%9B%BE"><span class="toc-number">1.</span> <span class="toc-text">9.图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%9B%BE"><span class="toc-number">1.1.</span> <span class="toc-text">1.图</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%9B%BE%E5%B8%B8%E8%A7%81%E7%B1%BB%E5%9E%8B%E4%B8%8E%E6%9C%AF%E8%AF%AD"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.图常见类型与术语</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%9B%BE%E7%9A%84%E8%A1%A8%E7%A4%BA"><span class="toc-number">1.1.2.</span> <span class="toc-text">2.图的表示</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E9%82%BB%E6%8E%A5%E7%9F%A9%E9%98%B5"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">1.邻接矩阵</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E9%82%BB%E6%8E%A5%E8%A1%A8"><span class="toc-number">1.1.2.2.</span> <span class="toc-text">2.邻接表</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%9B%BE%E7%9A%84%E5%B8%B8%E8%A7%81%E5%BA%94%E7%94%A8"><span class="toc-number">1.1.3.</span> <span class="toc-text">3.图的常见应用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%9B%BE%E7%9A%84%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C"><span class="toc-number">1.2.</span> <span class="toc-text">2.图的基础操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%9F%BA%E4%BA%8E%E9%82%BB%E6%8E%A5%E7%9F%A9%E9%98%B5%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.2.1.</span> <span class="toc-text">1.基于邻接矩阵的实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%9F%BA%E4%BA%8E%E9%82%BB%E6%8E%A5%E8%A1%A8%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.基于邻接表的实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E6%95%88%E7%8E%87%E5%AF%B9%E6%AF%94"><span class="toc-number">1.2.3.</span> <span class="toc-text">3.效率对比</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%9B%BE%E7%9A%84%E9%81%8D%E5%8E%86"><span class="toc-number">1.3.</span> <span class="toc-text">3.图的遍历</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86"><span class="toc-number">1.3.1.</span> <span class="toc-text">1.广度优先遍历</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.3.1.1.</span> <span class="toc-text">1.算法实现</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="toc-number">1.3.1.2.</span> <span class="toc-text">2.复杂度分析</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86"><span class="toc-number">1.3.2.</span> <span class="toc-text">2.深度优先遍历</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0-2"><span class="toc-number">1.3.2.1.</span> <span class="toc-text">1.算法实现</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90-2"><span class="toc-number">1.3.2.2.</span> <span class="toc-text">2.复杂度分析</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/06/04/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%959/" title="数据结构与算法9">数据结构与算法9</a><time datetime="2026-06-04T04:46:52.978Z" title="发表于 2026-06-04 12:46:52">2026-06-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/06/04/%E8%B4%AA%E5%BF%83/" title="算法题贪心">算法题贪心</a><time datetime="2026-06-04T04:35:03.460Z" title="发表于 2026-06-04 12:35:03">2026-06-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/06/04/%E6%A8%A1%E6%8B%9F/" title="算法题模拟">算法题模拟</a><time datetime="2026-06-04T04:35:03.454Z" title="发表于 2026-06-04 12:35:03">2026-06-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/06/04/%E6%9E%9A%E4%B8%BE/" title="算法题枚举">算法题枚举</a><time datetime="2026-06-04T04:35:03.449Z" title="发表于 2026-06-04 12:35:03">2026-06-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/06/04/LV5/" title="算法题LV5">算法题LV5</a><time datetime="2026-06-04T04:35:03.444Z" title="发表于 2026-06-04 12:35:03">2026-06-04</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By 余</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.4.3</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>(async () => {
+  const showKatex = () => {
+    document.querySelectorAll('#article-container .katex').forEach(el => el.classList.add('katex-show'))
+  }
+
+  if (!window.katex_js_css) {
+    window.katex_js_css = true
+    await btf.getCSS('https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css')
+    if (true) {
+      await btf.getScript('https://cdn.jsdelivr.net/npm/katex/dist/contrib/copy-tex.min.js')
+    }
+  }
+
+  showKatex()
+})()</script><script>(() => {
+  const runMermaid = ele => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    ele.forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = `%%{init:{ 'theme':'${theme}'}}%%\n`
+      const mermaidID = `mermaid-${index}`
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+      const renderMermaid = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      // mermaid v9 and v10 compatibility
+      typeof renderFn === 'string' ? renderMermaid(renderFn) : renderFn.then(({ svg }) => renderMermaid(svg))
+    })
+  }
+
+  const codeToMermaid = () => {
+    const codeMermaidEle = document.querySelectorAll('pre > code.mermaid')
+    if (codeMermaidEle.length === 0) return
+
+    codeMermaidEle.forEach(ele => {
+      const preEle = document.createElement('pre')
+      preEle.className = 'mermaid-src'
+      preEle.hidden = true
+      preEle.textContent = ele.textContent
+      const newEle = document.createElement('div')
+      newEle.className = 'mermaid-wrap'
+      newEle.appendChild(preEle)
+      ele.parentNode.replaceWith(newEle)
+    })
+  }
+
+  const loadMermaid = () => {
+    if (true) codeToMermaid()
+    const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+    if ($mermaid.length === 0) return
+
+    const runMermaidFn = () => runMermaid($mermaid)
+    btf.addGlobalFn('themeChange', runMermaidFn, 'mermaid')
+    window.loadMermaid ? runMermaidFn() : btf.getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaidFn)
+  }
+
+  btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script></div><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="请输入内容" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>

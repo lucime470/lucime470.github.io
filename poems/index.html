@@ -1,0 +1,663 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>诗句库 | 不做花看</title><meta name="author" content="余"><meta name="copyright" content="余"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="📚 诗句库     正在加载诗句...                  -       总诗句数                     搜索           正在加载诗句数据...           📥 导出TXT     📄 导出JSON      &#x2F;&#x2F; 简单版本的诗句加载 function loadSimplePoems() {   console.log(&#39;开">
+<meta property="og:type" content="website">
+<meta property="og:title" content="诗句库">
+<meta property="og:url" content="http://example.com/poems/index.html">
+<meta property="og:site_name" content="不做花看">
+<meta property="og:description" content="📚 诗句库     正在加载诗句...                  -       总诗句数                     搜索           正在加载诗句数据...           📥 导出TXT     📄 导出JSON      &#x2F;&#x2F; 简单版本的诗句加载 function loadSimplePoems() {   console.log(&#39;开">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/avatar.webp">
+<meta property="article:published_time" content="2023-12-31T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-10-12T02:49:58.482Z">
+<meta property="article:author" content="余">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/avatar.webp"><script type="application/ld+json"></script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/poems/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '诗句库',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'page'
+}</script><style> .post-content h1 { font-size:2.5rem !important; } .post-content h2 { font-size:2rem !important; } .post-content h3 { font-size:1.75rem !important; } .post-content h4 { font-size:1.5rem !important; } .post-content h5 { font-size:1.25rem !important; } .post-content h6 { font-size:1.1rem !important; } </style><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/avatar.webp" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">19</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">17</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/poems/"><i class="fa-fw fas fa-book"></i><span> 诗句库</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="not-home-page" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">不做花看</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/poems/"><i class="fa-fw fas fa-book"></i><span> 诗句库</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="page-site-info"><h1 id="site-title">诗句库</h1></div></header><main class="layout" id="content-inner"><div id="page"><div class="container" id="article-container"><div class="poems-simple-container">
+  <header class="poems-simple-header">
+    <h1>📚 诗句库</h1>
+    <p class="subtitle">正在加载诗句...</p>
+  </header>
+  <div class="poems-simple-stats">
+    <div class="stat">
+      <span class="stat-number">-</span>
+      <span class="stat-label">总诗句数</span>
+    </div>
+  </div>
+  <div class="search-simple-box">
+    <input type="text" id="search-simple-input" placeholder="🔍 搜索诗句...">
+    <button onclick="simpleSearch()">搜索</button>
+  </div>
+  <div class="poems-simple-list" id="poems-simple-list">
+    <div class="loading-simple">正在加载诗句数据...</div>
+  </div>
+  <div class="export-simple-buttons">
+    <button onclick="simpleExportTxt()">📥 导出TXT</button>
+    <button onclick="simpleExportJson()">📄 导出JSON</button>
+  </div>
+</div>
+<script>
+// 简单版本的诗句加载
+function loadSimplePoems() {
+  console.log('开始加载诗句...');
+
+  // 直接请求JSON文件
+  fetch('/subtitle.json')
+    .then(response => {
+      console.log('响应状态:', response.status);
+      if (!response.ok) {
+        throw new Error('网络响应不正常: ' + response.status);
+      }
+      return response.json();
+    })
+    .then(poemsData => {
+      console.log('成功加载数据:', poemsData);
+      
+      // 处理数据
+      let poems = [];
+      if (Array.isArray(poemsData)) {
+        poems = poemsData;
+      } else if (typeof poemsData === 'object') {
+        poems = Object.values(poemsData).flat();
+      }
+      
+      poems = poems.filter(poem => poem && poem.trim().length > 0);
+      console.log('处理后的诗句数量:', poems.length);
+      
+      // 🆕 添加这一行实现倒序
+      poems = poems.reverse(); 
+      
+      // 显示诗句
+      displaySimplePoems(poems);
+      updateSimpleStats(poems);
+    })
+    .catch(error => {
+      console.error('加载失败:', error);
+      document.getElementById('poems-simple-list').innerHTML = 
+        '<div class="error-simple">❌ 加载失败: ' + error.message + '</div>';
+    });
+}
+
+// 显示诗句
+function displaySimplePoems(poems) {
+  const container = document.getElementById('poems-simple-list');
+
+  if (poems.length === 0) {
+    container.innerHTML = '<div class="no-poems">暂无诗句数据</div>';
+    return;
+  }
+
+  let html = '';
+  poems.forEach((poem, index) => {
+    html += `
+      <div class="poem-simple-item">
+        <div class="poem-simple-content">
+          <span class="poem-simple-text">${poem}</span>
+          <span class="poem-simple-meta">#${index + 1} · ${poem.length}字</span>
+        </div>
+      </div>
+    `;
+  });
+
+  container.innerHTML = html;
+}
+
+// 更新统计
+function updateSimpleStats(poems) {
+  const total = poems.length;
+
+  document.querySelector('.subtitle').textContent = `共收录 ${total} 句优美诗句`;
+  document.querySelectorAll('.stat-number')[0].textContent = total;
+}
+
+// 搜索功能
+function simpleSearch() {
+  const keyword = document.getElementById('search-simple-input').value.toLowerCase().trim();
+  const allPoems = Array.from(document.querySelectorAll('.poem-simple-text'))
+    .map(element => element.textContent);
+
+  const container = document.getElementById('poems-simple-list');
+
+  if (keyword === '') {
+    // 显示所有诗句
+    document.querySelectorAll('.poem-simple-item').forEach(item => {
+      item.style.display = 'block';
+    });
+    return;
+  }
+
+  // 过滤显示
+  document.querySelectorAll('.poem-simple-item').forEach((item, index) => {
+    if (allPoems[index].toLowerCase().includes(keyword)) {
+      item.style.display = 'block';
+    } else {
+      item.style.display = 'none';
+    }
+  });
+}
+
+// 导出功能
+function simpleExportTxt() {
+  const poems = Array.from(document.querySelectorAll('.poem-simple-text'))
+    .map(element => element.textContent);
+
+  const text = poems.map((poem, index) => `${index + 1}. ${poem}`).join('\n\n');
+  downloadFile(text, '诗句列表.txt', 'text/plain');
+}
+
+function simpleExportJson() {
+  const poems = Array.from(document.querySelectorAll('.poem-simple-text'))
+    .map(element => element.textContent);
+
+  const json = JSON.stringify(poems, null, 2);
+  downloadFile(json, 'poems.json', 'application/json');
+}
+
+function downloadFile(content, filename, type) {
+  const blob = new Blob([content], { type: type });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+// 页面加载后执行
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('DOM加载完成，开始加载诗句...');
+  loadSimplePoems();
+
+  // 搜索框回车事件
+  document.getElementById('search-simple-input').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+      simpleSearch();
+    }
+  });
+});
+</script>
+<style>
+/* 基础样式 */
+.poems-simple-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.poems-simple-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.poems-simple-header h1 {
+  color: #2c3e50;
+  margin-bottom: 10px;
+  font-size: 2.2em;
+}
+
+.subtitle {
+  color: #7f8c8d;
+  font-size: 1.1em;
+}
+
+/* 统计信息 */
+.poems-simple-stats {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.stat {
+  text-align: center;
+  padding: 15px 25px;
+  background: #f8f9fa;
+  border-radius: 10px;
+  min-width: 100px;
+}
+
+.stat-number {
+  display: block;
+  font-size: 1.8em;
+  font-weight: bold;
+  color: #3498db;
+  margin-bottom: 5px;
+}
+
+.stat-label {
+  font-size: 0.9em;
+  color: #7f8c8d;
+}
+
+/* 搜索框 */
+.search-simple-box {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+  justify-content: center;
+}
+
+.search-simple-box input {
+  padding: 10px 15px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 1em;
+  min-width: 300px;
+}
+
+.search-simple-box input:focus {
+  outline: none;
+  border-color: #3498db;
+}
+
+.search-simple-box button {
+  padding: 10px 20px;
+  background: #3498db;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.search-simple-box button:hover {
+  background: #2980b9;
+}
+
+/* 诗句列表 */
+.poems-simple-list {
+  min-height: 200px;
+}
+
+.loading-simple {
+  text-align: center;
+  padding: 40px;
+  color: #7f8c8d;
+  font-size: 1.1em;
+}
+
+.error-simple {
+  text-align: center;
+  padding: 40px;
+  color: #e74c3c;
+  font-size: 1.1em;
+}
+
+.no-poems {
+  text-align: center;
+  padding: 40px;
+  color: #7f8c8d;
+}
+
+.poem-simple-item {
+  background: white;
+  border: 1px solid #e1e8ed;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  padding: 20px;
+  transition: all 0.3s ease;
+}
+
+.poem-simple-item:hover {
+  border-color: #3498db;
+  box-shadow: 0 2px 8px rgba(52, 152, 219, 0.1);
+}
+
+.poem-simple-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.poem-simple-text {
+  flex: 1;
+  font-size: 1.1em;
+  line-height: 1.5;
+  color: #2c3e50;
+}
+
+.poem-simple-meta {
+  color: #7f8c8d;
+  font-size: 0.9em;
+  white-space: nowrap;
+}
+
+/* 导出按钮 */
+.export-simple-buttons {
+  text-align: center;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #e1e8ed;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.export-simple-buttons button {
+  padding: 12px 24px;
+  background: #27ae60;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background 0.3s ease;
+}
+
+.export-simple-buttons button:hover {
+  background: #219a52;
+}
+
+.export-simple-buttons button:first-child {
+  background: #3498db;
+}
+
+.export-simple-buttons button:first-child:hover {
+  background: #2980b9;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .poems-simple-container {
+    padding: 15px;
+  }
+
+  .poems-simple-stats {
+    gap: 20px;
+  }
+
+  .stat {
+    padding: 10px 15px;
+    min-width: 80px;
+  }
+
+  .search-simple-box {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .search-simple-box input {
+    min-width: auto;
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .poem-simple-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .export-simple-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .export-simple-buttons button {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+</style></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/avatar.webp" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">余</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">19</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">17</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/lucime470"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/06/04/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%959/" title="数据结构与算法9">数据结构与算法9</a><time datetime="2026-06-04T04:46:52.978Z" title="发表于 2026-06-04 12:46:52">2026-06-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/06/04/%E8%B4%AA%E5%BF%83/" title="算法题贪心">算法题贪心</a><time datetime="2026-06-04T04:35:03.460Z" title="发表于 2026-06-04 12:35:03">2026-06-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/06/04/%E6%A8%A1%E6%8B%9F/" title="算法题模拟">算法题模拟</a><time datetime="2026-06-04T04:35:03.454Z" title="发表于 2026-06-04 12:35:03">2026-06-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/06/04/%E6%9E%9A%E4%B8%BE/" title="算法题枚举">算法题枚举</a><time datetime="2026-06-04T04:35:03.449Z" title="发表于 2026-06-04 12:35:03">2026-06-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/06/04/LV5/" title="算法题LV5">算法题LV5</a><time datetime="2026-06-04T04:35:03.444Z" title="发表于 2026-06-04 12:35:03">2026-06-04</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/CQB/"><span class="card-category-list-name">CQB</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Java/"><span class="card-category-list-name">Java</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/MySQL/"><span class="card-category-list-name">MySQL</span><span class="card-category-list-count">3</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/hexo/"><span class="card-category-list-name">hexo</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"><span class="card-category-list-name">数据结构与算法</span><span class="card-category-list-count">3</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%9C%AF%E6%95%B0/"><span class="card-category-list-name">术数</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%AE%97%E6%B3%95/"><span class="card-category-list-name">算法</span><span class="card-category-list-count">8</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%AE%97%E6%B3%95/java/"><span class="card-category-list-name">java</span><span class="card-category-list-count">8</span></a></li></ul></li>
+          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/%E8%B4%AA%E5%BF%83/" style="font-size: 1.1em; color: #999">贪心</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" style="font-size: 1.5em; color: #99a9bf">数据结构与算法</a> <a href="/tags/%E5%89%AF%E6%A0%87%E9%A2%98/" style="font-size: 1.1em; color: #999">副标题</a> <a href="/tags/LV3/" style="font-size: 1.1em; color: #999">LV3</a> <a href="/tags/%E5%9F%BA%E7%A1%80/" style="font-size: 1.3em; color: #99a1ac">基础</a> <a href="/tags/%E8%AF%AD%E5%BD%95/" style="font-size: 1.1em; color: #999">语录</a> <a href="/tags/%E6%9E%9A%E4%B8%BE/" style="font-size: 1.1em; color: #999">枚举</a> <a href="/tags/%E5%B0%8F%E5%85%AD%E5%A3%AC/" style="font-size: 1.1em; color: #999">小六壬</a> <a href="/tags/%E6%A8%A1%E6%8B%9F/" style="font-size: 1.1em; color: #999">模拟</a> <a href="/tags/%E8%B5%B7%E8%AF%BE%E5%99%A8/" style="font-size: 1.1em; color: #999">起课器</a> <a href="/tags/LV5/" style="font-size: 1.1em; color: #999">LV5</a> <a href="/tags/DFS/" style="font-size: 1.1em; color: #999">DFS</a> <a href="/tags/%E8%BF%9B%E9%98%B6/" style="font-size: 1.1em; color: #999">进阶</a> <a href="/tags/%E8%BF%90%E7%BB%B4/" style="font-size: 1.1em; color: #999">运维</a> <a href="/tags/LV4/" style="font-size: 1.1em; color: #999">LV4</a> <a href="/tags/LV1/" style="font-size: 1.1em; color: #999">LV1</a> <a href="/tags/CQB/" style="font-size: 1.1em; color: #999">CQB</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>归档</span>
+      
+    </div>
+  
+    <ul class="card-archive-list">
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/06/">
+            <span class="card-archive-list-date">
+              六月 2026
+            </span>
+            <span class="card-archive-list-count">9</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/12/">
+            <span class="card-archive-list-date">
+              十二月 2025
+            </span>
+            <span class="card-archive-list-count">2</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/10/">
+            <span class="card-archive-list-date">
+              十月 2025
+            </span>
+            <span class="card-archive-list-count">2</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/08/">
+            <span class="card-archive-list-date">
+              八月 2025
+            </span>
+            <span class="card-archive-list-count">4</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/02/">
+            <span class="card-archive-list-date">
+              二月 2025
+            </span>
+            <span class="card-archive-list-count">2</span>
+          </a>
+        </li>
+      
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">19</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2026-06-04T16:50:27.651Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By 余</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.4.3</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>(async () => {
+  const showKatex = () => {
+    document.querySelectorAll('#article-container .katex').forEach(el => el.classList.add('katex-show'))
+  }
+
+  if (!window.katex_js_css) {
+    window.katex_js_css = true
+    await btf.getCSS('https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css')
+    if (true) {
+      await btf.getScript('https://cdn.jsdelivr.net/npm/katex/dist/contrib/copy-tex.min.js')
+    }
+  }
+
+  showKatex()
+})()</script><script>(() => {
+  const runMermaid = ele => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    ele.forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = `%%{init:{ 'theme':'${theme}'}}%%\n`
+      const mermaidID = `mermaid-${index}`
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+      const renderMermaid = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      // mermaid v9 and v10 compatibility
+      typeof renderFn === 'string' ? renderMermaid(renderFn) : renderFn.then(({ svg }) => renderMermaid(svg))
+    })
+  }
+
+  const codeToMermaid = () => {
+    const codeMermaidEle = document.querySelectorAll('pre > code.mermaid')
+    if (codeMermaidEle.length === 0) return
+
+    codeMermaidEle.forEach(ele => {
+      const preEle = document.createElement('pre')
+      preEle.className = 'mermaid-src'
+      preEle.hidden = true
+      preEle.textContent = ele.textContent
+      const newEle = document.createElement('div')
+      newEle.className = 'mermaid-wrap'
+      newEle.appendChild(preEle)
+      ele.parentNode.replaceWith(newEle)
+    })
+  }
+
+  const loadMermaid = () => {
+    if (true) codeToMermaid()
+    const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+    if ($mermaid.length === 0) return
+
+    const runMermaidFn = () => runMermaid($mermaid)
+    btf.addGlobalFn('themeChange', runMermaidFn, 'mermaid')
+    window.loadMermaid ? runMermaidFn() : btf.getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaidFn)
+  }
+
+  btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script></div><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="请输入内容" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
